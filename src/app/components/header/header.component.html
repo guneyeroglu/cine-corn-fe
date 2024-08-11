@@ -1,0 +1,13 @@
+<header class="header">
+  <a href="{{ homePath }}" class="header__image">
+    <cine-corn-icon />
+  </a>
+  <nav>
+    <ul>
+      <li *ngFor="let item of menuItems">
+        <a href="{{ item.path }}">{{ item.name }}</a>
+      </li>
+    </ul>
+  </nav>
+  <div>Login etc.</div>
+</header>
