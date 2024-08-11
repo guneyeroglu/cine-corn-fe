@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
 import { IMenuItem } from '../../global/interfaces';
 import { APP_ROUTES } from '../../global/enums';
-import { CommonModule } from '@angular/common';
-import { CineCornIconComponent } from '../../assets/images/svg/cine-corn-icon/cine-corn-icon.component';
+import { CineCornIconComponent } from '../icons';
+import { RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'cine-corn-header',
   standalone: true,
-  imports: [CommonModule, CineCornIconComponent],
+  imports: [CommonModule, CineCornIconComponent, RouterLink, RouterLinkActive, RouterOutlet],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
@@ -17,7 +19,7 @@ export class CineCornHeaderComponent {
   menuItems: IMenuItem[] = [
     {
       name: 'Home',
-      path: APP_ROUTES.home,
+      path: this.homePath,
     },
     {
       name: 'Movies',

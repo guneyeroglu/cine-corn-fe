@@ -1,11 +1,15 @@
 <header class="header">
-  <a href="{{ homePath }}" class="header__image">
+  <a routerLink="{{ homePath }}" routerLinkActive="active" class="header__image">
     <cine-corn-icon />
   </a>
-  <nav>
+  <nav class="header__nav">
     <ul>
-      <li *ngFor="let item of menuItems">
-        <a href="{{ item.path }}">{{ item.name }}</a>
+      <li
+        *ngFor="let item of menuItems"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <a routerLink="{{ item.path }}">{{ item.name }}</a>
       </li>
     </ul>
   </nav>

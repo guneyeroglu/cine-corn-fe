@@ -1,7 +1,28 @@
+@use './app/assets/styles/variables' as colors;
 *,
 *::after,
 *::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: colors.$background-color;
+  background-repeat: no-repeat;
+  color: colors.$primary-color;
+}
+
+a {
+  color: colors.$primary-color;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
 }
