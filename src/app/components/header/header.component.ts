@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 import { IMenuItem } from '../../global/interfaces';
 import { APP_ROUTES } from '../../global/enums';
 import { CineCornIconComponent } from '../icons';
-import { RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'cine-corn-header',
@@ -24,14 +24,6 @@ export class CineCornHeaderComponent {
     {
       name: 'Movies',
       path: APP_ROUTES.movies,
-    },
-    {
-      name: 'Lists',
-      path: APP_ROUTES.lists,
-    },
-    {
-      name: 'Favorites',
-      path: APP_ROUTES.favorites,
     },
   ];
 }

@@ -1,0 +1,83 @@
+@use '../../../assets/styles/variables' as colors;
+
+.home {
+  &__video {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    z-index: 7;
+
+    &--overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: linear-gradient(180deg, transparent 0%, #0b0b0b 100%);
+    }
+
+    video {
+      width: 100%;
+      min-height: 500px;
+      max-height: calc(75dvh - 75px);
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.025);
+      filter: brightness(0.85);
+      transition: all 0.35s ease;
+
+      & ~ .volume {
+        cursor: pointer;
+        position: absolute;
+        bottom: 24px;
+        right: 24px;
+        padding: 0.5rem;
+        border: 2px solid colors.$secondary_color;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        filter: brightness(0.65);
+        transition: all 0.35s ease;
+        z-index: 3;
+
+        &:hover {
+          filter: brightness(1);
+        }
+      }
+
+      & ~ .play {
+        cursor: pointer;
+        position: absolute;
+        padding: 0.5rem;
+        border: 2px solid colors.$secondary_color;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        filter: brightness(0.65);
+        opacity: 0;
+        transition: all 0.35s ease;
+        z-index: 3;
+
+        &:hover {
+          filter: brightness(1);
+        }
+      }
+    }
+
+    &:hover {
+      video {
+        filter: brightness(0.35);
+      }
+
+      button.play {
+        opacity: 1;
+      }
+    }
+  }
+}

@@ -1,4 +1,5 @@
-@use './app/assets/styles/variables' as colors;
+@use './assets/styles/variables' as colors;
+
 *,
 *::after,
 *::before {
@@ -12,9 +13,7 @@ body {
   height: 100%;
 }
 
-body {
-  background: colors.$background-color;
-  background-repeat: no-repeat;
+html {
   color: colors.$primary-color;
 }
 
