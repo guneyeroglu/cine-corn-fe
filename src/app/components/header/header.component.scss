@@ -11,6 +11,7 @@
     backdrop-filter: blur(5px);
     background-color: transparent;
     transition: all 0.35s ease;
+    height: 75px;
 
     &.scroll {
       background-color: convert-to-rgba(colors.$tertiary-color, 0.75);
@@ -21,8 +22,8 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: stretch;
-      padding: 0 16px;
-      @include max-width(1440px);
+      height: 100%;
+      @include responsive-container();
 
       &--link {
         flex: 1 1 33.333%;

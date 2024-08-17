@@ -3,7 +3,12 @@
 
 :host {
   .footer {
-    padding: 24px 16px;
-    @include max-width(1440px);
+    border-top: 1px solid colors.$primary-color;
+
+    &__container {
+      @include responsive-container();
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
   }
 }

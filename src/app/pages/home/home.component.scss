@@ -83,36 +83,40 @@
     }
   }
 
-  &__featured {
-    padding: 8px 16px 16px 16px;
-    @include max-width(1440px);
-    margin-top: 16px;
-    margin-bottom: 16px;
-    border-radius: 10px;
-    background-color: colors.$primary-color;
+  &__container {
+    @include responsive-container();
 
-    &--title {
-      display: block;
-      font-size: 2rem;
-      font-weight: 500;
-      letter-spacing: -1.25px;
-      color: colors.$tertiary-color;
-      margin-bottom: 16px;
-    }
+    &--featured {
+      width: 100%;
+      padding: 8px 16px 16px 16px;
+      border-radius: 10px;
+      background-color: colors.$primary-color;
+      margin-top: 24px;
+      margin-bottom: 24px;
 
-    &--list {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      align-items: center;
-      gap: 16px;
+      &-title {
+        display: block;
+        font-size: 2rem;
+        font-weight: 500;
+        letter-spacing: -1.25px;
+        color: colors.$tertiary-color;
+        margin-bottom: 16px;
+      }
 
-      li {
-        @include calculate-width(5, 16px);
+      &-list {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 16px;
 
-        cine-corn-movie-card {
-          width: 100%;
+        li {
+          @include calculate-width(5, 16px);
+
+          cine-corn-movie-card {
+            width: 100%;
+          }
         }
       }
     }

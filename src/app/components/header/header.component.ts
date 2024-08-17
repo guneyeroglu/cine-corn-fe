@@ -4,12 +4,11 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 import { IMenuItem } from '../../global/interfaces';
 import { APP_ROUTES } from '../../global/enums';
-import { CineCornIconComponent } from '../icons';
 
 @Component({
   selector: 'cine-corn-header',
   standalone: true,
-  imports: [CommonModule, CineCornIconComponent, RouterLink, RouterLinkActive, RouterOutlet],
+  imports: [CommonModule, RouterLink, RouterLinkActive, RouterOutlet],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
