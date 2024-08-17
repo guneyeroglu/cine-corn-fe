@@ -14,6 +14,8 @@ import { CommonModule } from '@angular/common';
 export class CineCornMovieCardComponent {
   @Input() movie!: IMovie;
   movieDetailsPath!: string;
+  isFavorite: boolean = false; //! service.
+  isHovered: boolean = false;
 
   ngOnInit() {
     const resolvedPath: string = APP_ROUTES.movie_details.replace(':id', this.movie.id.toString());
