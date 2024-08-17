@@ -1,72 +1,92 @@
 @use '../../../assets/styles/variables' as colors;
+@import '../../../assets/styles/functions';
 
 :host {
-  backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
   z-index: 999;
 
   .header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: stretch;
-    padding: 0 16px;
+    position: relative;
+    backdrop-filter: blur(5px);
+    background-color: transparent;
+    transition: all 0.35s ease;
 
-    &__image {
-      flex: 1 1 33.333%;
-      display: inline-flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      align-items: center;
+    &.scroll {
+      background-color: convert-to-rgba(colors.$tertiary-color, 0.75);
     }
 
-    &__nav {
-      flex: 1 1 33.333%;
+    &__container {
       display: flex;
       flex-direction: row;
-      justify-content: center;
-      align-items: center;
+      justify-content: space-between;
+      align-items: stretch;
+      padding: 0 16px;
+      @include max-width(1440px);
 
-      ul {
+      &--link {
+        flex: 1 1 33.333%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+
+        a {
+          display: inline-flex;
+        }
+      }
+
+      &--nav {
+        flex: 1 1 33.333%;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        gap: 0.5rem;
 
-        li {
-          font-size: 1.25rem;
+        ul {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          gap: 0.5rem;
 
-          a {
-            padding: 10px 16px;
-            opacity: 0.75;
-            border-bottom: 2.5px solid transparent;
-            border-radius: 0.75rem;
-            transition: all 0.35s ease;
-          }
+          li {
+            font-size: 1.25rem;
 
-          &.active a {
-            color: colors.$border-color;
-            opacity: 1;
-            border-bottom: 2.5px solid colors.$border-color;
-          }
+            a {
+              padding: 10px 16px;
+              opacity: 0.75;
+              border-bottom: 2.5px solid transparent;
+              border-radius: 0.75rem;
+              transition: all 0.35s ease;
+            }
 
-          &:hover:is(:not(.active)) a {
-            color: colors.$hover-color;
-            opacity: 1;
-            border-bottom: 2.5px solid colors.$hover-color;
+            &.active a {
+              color: colors.$border-color;
+              opacity: 1;
+              border-bottom: 2.5px solid colors.$border-color;
+            }
+
+            &:hover:is(:not(.active)) a {
+              color: colors.$hover-color;
+              opacity: 1;
+              border-bottom: 2.5px solid colors.$hover-color;
+            }
           }
         }
       }
+
+      &--actions {
+        flex: 1 1 33.333%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+      }
     }
 
-    &__actions {
-      flex: 1 1 33.333%;
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-end;
-      align-items: center;
+    &:hover {
+      background-color: convert-to-rgba(colors.$tertiary-color, 1);
     }
   }
 }

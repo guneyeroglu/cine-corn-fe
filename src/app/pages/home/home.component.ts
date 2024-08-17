@@ -1,15 +1,18 @@
-import { NgOptimizedImage } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
+
+import { CineCornMovieCardComponent } from '../../components/movie-card/movie-card.component';
+import { movies as mockMoviesDb } from '../../global/consts';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgOptimizedImage, MatIconModule],
+  imports: [CommonModule, NgOptimizedImage, CineCornMovieCardComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
+  movies = mockMoviesDb;
   _isMuted: boolean = JSON.parse(localStorage.getItem('volume') ?? 'true');
   isMuted: boolean = this._isMuted;
   play: boolean = true;

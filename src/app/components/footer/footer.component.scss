@@ -1,1 +1,9 @@
+@use '../../../assets/styles/variables' as colors;
+@import '../../../assets/styles/functions';
 
+:host {
+  .footer {
+    padding: 24px 16px;
+    @include max-width(1440px);
+  }
+}

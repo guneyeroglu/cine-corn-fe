@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card__overlay"></div>
+  <a routerLink="{{ movieDetailsPath }}" class="card__link"></a>
+  <div class="card__header">
+    <button class="card__header--action">
+      <i class="material-icons">favorite</i>
+    </button>
+  </div>
+  <picture class="card__image">
+    <img src="{{ this.movie.imageSrc }}" alt="dune" />
+  </picture>
+  <div class="card__footer">
+    <div class="card__footer--title">
+      <span>{{ this.movie.title }}</span>
+    </div>
+    <div class="card__footer--subtitle">
+      <span>{{ this.movie.year }}</span>
+      <span>{{ this.movie.point }}</span>
+    </div>
+  </div>
+</div>

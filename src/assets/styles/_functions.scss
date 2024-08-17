@@ -1,0 +1,13 @@
+@mixin calculate-width($element-count, $gap) {
+  width: calc((100% - ($element-count - 1) * $gap) / $element-count);
+}
+
+@mixin max-width($max-width) {
+  width: 100%;
+  max-width: $max-width;
+  margin: 0 auto;
+}
+
+@function convert-to-rgba($color, $opacity: 1) {
+  @return rgba($color, $opacity);
+}

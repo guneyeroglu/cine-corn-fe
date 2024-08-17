@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
@@ -14,8 +14,9 @@ import { CineCornIconComponent } from '../icons';
   styleUrl: './header.component.scss',
 })
 export class CineCornHeaderComponent {
-  homePath = APP_ROUTES.home;
-
+  homePath: string = APP_ROUTES.home;
+  defaultClass: string = '';
+  headerClass: string = this.defaultClass;
   menuItems: IMenuItem[] = [
     {
       name: 'Home',
@@ -26,4 +27,13 @@ export class CineCornHeaderComponent {
       path: APP_ROUTES.movies,
     },
   ];
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    if (window.scrollY >= 75) {
+      this.headerClass = `${this.defaultClass} scroll`;
+    } else {
+      this.headerClass = this.defaultClass;
+    }
+  }
 }
