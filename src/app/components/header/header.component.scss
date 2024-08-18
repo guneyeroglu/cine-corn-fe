@@ -88,9 +88,10 @@
         gap: 0.5rem;
 
         a {
+          transition: all 0.35s ease;
+
           span {
             font-size: 1.125rem;
-            transition: all 0.35s ease;
           }
 
           &:hover {
