@@ -1,6 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 import { IMenuItem } from '../../global/interfaces';
 import { APP_ROUTES } from '../../global/enums';
@@ -8,7 +9,7 @@ import { APP_ROUTES } from '../../global/enums';
 @Component({
   selector: 'cine-corn-header',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive, RouterOutlet],
+  imports: [CommonModule, RouterLink, RouterLinkActive, RouterOutlet, MatButtonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })

@@ -54,11 +54,11 @@
           gap: 0.5rem;
 
           li {
-            font-size: 1.25rem;
-
             a {
+              font-size: 1.25rem;
               padding: 10px 16px;
               opacity: 0.75;
+              color: colors.$primary-color;
               border-bottom: 2.5px solid transparent;
               border-radius: 0.75rem;
               transition: all 0.35s ease;
@@ -88,25 +88,16 @@
         gap: 0.5rem;
 
         a {
-          background-color: transparent;
-          outline: none;
-          border: 1px solid colors.$primary-color;
-          border-radius: 10px;
-          padding: 10px 16px;
-          cursor: pointer;
-          position: relative;
-          overflow: hidden;
-          transition: all 0.35s ease;
-
           span {
             font-size: 1.125rem;
-            color: colors.$primary-color;
             transition: all 0.35s ease;
           }
 
           &:hover {
             background-color: colors.$hover-color;
-            border-color: colors.$hover-color;
+            span {
+              color: colors.$primary-color;
+            }
           }
         }
       }

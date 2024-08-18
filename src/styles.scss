@@ -1,5 +1,9 @@
 @use './assets/styles/variables' as colors;
+@use '@angular/material' as mat;
+@use './assets/styles/m3-theme.scss' as m3-theme;
 @import './assets/styles/functions';
+
+@include mat.core();
 
 *,
 *::after,
@@ -7,6 +11,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  @include mat.all-component-themes(m3-theme.$light-theme);
 }
 
 html,

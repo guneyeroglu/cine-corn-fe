@@ -12,15 +12,15 @@
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
         >
-          <a routerLink="{{ item.path }}">{{ item.name }}</a>
+          <a mat-button routerLink="{{ item.path }}">{{ item.name }}</a>
         </li>
       </ul>
     </nav>
     <div class="header__container--actions">
-      <a routerLink="{{ loginPath }}">
+      <a mat-raised-button routerLink="{{ loginPath }}">
         <span>Login</span>
       </a>
-      <a routerLink="{{ registerPath }}">
+      <a mat-raised-button routerLink="{{ registerPath }}">
         <span>Register</span>
       </a>
     </div>
