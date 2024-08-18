@@ -1,5 +1,8 @@
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
 
 import { CineCornMovieCardComponent } from '../../components/movie-card/movie-card.component';
 import { movies as mockMoviesDb } from '../../global/consts';
@@ -7,7 +10,13 @@ import { movies as mockMoviesDb } from '../../global/consts';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, NgOptimizedImage, CineCornMovieCardComponent],
+  imports: [
+    CommonModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatButtonModule,
+    CineCornMovieCardComponent,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })

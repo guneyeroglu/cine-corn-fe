@@ -5,11 +5,21 @@
       <source src="assets/videos/featureHome.mp4" type="video/mp4" />
       Your browser does not support this video.
     </video>
-    <button class="play" (click)="handlePlayVideo()">
-      <i class="material-icons">{{ play ? 'pause' : 'play_arrow' }}</i>
+    <button
+      mat-icon-button
+      matTooltip="{{ play ? 'Pause' : 'Play' }}"
+      class="play"
+      (click)="handlePlayVideo()"
+    >
+      <mat-icon fontIcon="{{ play ? 'pause' : 'play_arrow' }}"></mat-icon>
     </button>
-    <button class="volume" (click)="handleVolumeVideo()">
-      <i class="material-icons">{{ isMuted ? 'volume_off' : 'volume_up' }}</i>
+    <button
+      mat-icon-button
+      matTooltip="{{ isMuted ? 'Volume Off' : 'Volume On' }}"
+      class="volume"
+      (click)="handleVolumeVideo()"
+    >
+      <mat-icon fontIcon="{{ isMuted ? 'volume_off' : 'volume_up' }}"></mat-icon>
     </button>
   </div>
   <div class="home__container responsive-container">

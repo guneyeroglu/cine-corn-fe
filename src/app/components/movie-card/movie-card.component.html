@@ -3,11 +3,14 @@
   <a routerLink="{{ movieDetailsPath }}" class="card__link"></a>
   <div class="card__header">
     <button
+      mat-icon-button
       class="card__header--action"
       (mouseenter)="isHovered = true"
       (mouseleave)="isHovered = false"
     >
-      <i class="material-icons">{{ isFavorite || isHovered ? 'favorite' : 'favorite_outline' }}</i>
+      <mat-icon
+        fontIcon="{{ isFavorite || isHovered ? 'favorite' : 'favorite_outline' }}"
+      ></mat-icon>
     </button>
   </div>
   <picture class="card__image">

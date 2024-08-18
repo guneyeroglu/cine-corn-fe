@@ -14,6 +14,8 @@ import { APP_ROUTES } from '../../global/enums';
 })
 export class CineCornHeaderComponent {
   homePath: string = APP_ROUTES.home;
+  loginPath: string = APP_ROUTES.login;
+  registerPath: string = APP_ROUTES.register;
   defaultClass: string = '';
   headerClass: string = this.defaultClass;
   menuItems: IMenuItem[] = [
