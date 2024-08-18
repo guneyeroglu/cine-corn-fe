@@ -84,15 +84,14 @@
   }
 
   &__container {
-    @include responsive-container();
+    margin-top: 24px;
+    margin-bottom: 24px;
 
     &--featured {
       width: 100%;
       padding: 8px 16px 16px 16px;
       border-radius: 10px;
       background-color: colors.$primary-color;
-      margin-top: 24px;
-      margin-bottom: 24px;
 
       &-title {
         display: block;
