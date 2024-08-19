@@ -9,7 +9,6 @@ import {
   LoginComponent,
   MovieDetailsComponent,
   MoviesComponent,
-  ProfileComponent,
   RegisterComponent,
 } from './pages';
 
@@ -37,10 +36,6 @@ export const routes: Routes = [
   {
     path: APP_ROUTES.list_details,
     component: ListDetailsComponent,
-  },
-  {
-    path: APP_ROUTES.profile,
-    component: ProfileComponent,
   },
   {
     path: APP_ROUTES.login,

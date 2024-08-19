@@ -5,5 +5,4 @@ export * from './lists/lists.component';
 export * from './login/login.component';
 export * from './movie-details/movie-details.component';
 export * from './movies/movies.component';
-export * from './profile/profile.component';
 export * from './register/register.component';

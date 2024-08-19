@@ -5,7 +5,6 @@ export enum APP_ROUTES {
   favorites = 'favorites',
   lists = 'lists',
   list_details = 'lists/:id',
-  profile = 'profile',
   login = 'login',
   register = 'register',
 }
