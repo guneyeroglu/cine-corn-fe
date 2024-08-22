@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+
 import { CineCornHeaderComponent } from './components/header/header.component';
 import { CineCornFooterComponent } from './components/footer/footer.component';
 

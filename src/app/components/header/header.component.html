@@ -1,1 +1,23 @@
-<header>header works!</header>
+<header class="header responsive-container">
+  <a routerLink="{{ homePath }}" class="header__image">
+    <img src="../../../assets/images/cine-corn-icon.png" alt="CineCorn" />
+  </a>
+  <nav class="header__nav">
+    <ul class="header__nav--list">
+      <li
+        *ngFor="let headerMenuItem of headerMenuList"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <a routerLink="{{ headerMenuItem.path }}">{{ headerMenuItem.name }}</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="header__actions">
+    <button class="search">
+      <cine-corn-icon icon="search" />
+    </button>
+    <a routerLink="{{ loginPath }}">Login</a>
+    <a routerLink="{{ registerPath }}">Register</a>
+  </div>
+</header>
