@@ -1,0 +1,185 @@
+@use '../utils/variables' as colors;
+
+$colors: primary, secondary, success, error, info, warning;
+
+@mixin input-outlined($type) {
+  font-size: 1rem;
+  font-weight: 400;
+  color: map-get(colors.$colors, #{$type}-50);
+  background-color: transparent;
+  outline: none;
+  border: 1px solid map-get(colors.$colors, #{$type}-600);
+  border-radius: 10px;
+  padding: 10px 16px;
+  cursor: text;
+  transition: all 0.35s ease;
+
+  &:hover {
+    border-color: map-get(colors.$colors, #{$type}-500);
+  }
+
+  &:focus,
+  &:focus-visible {
+    transition: outline-offset 0s;
+    border-color: map-get(colors.$colors, #{$type}-500);
+    outline: 2px solid map-get(colors.$colors, #{$type}-500);
+    outline-offset: 3px;
+  }
+
+  &[error='true'] {
+    border-color: colors.$error-600;
+
+    &:hover {
+      border-color: colors.$error-500;
+    }
+
+    &:focus,
+    &:focus-visible {
+      border-color: colors.$error-500;
+      outline-color: colors.$error-500;
+    }
+  }
+}
+
+@mixin input-filled($type) {
+  font-size: 1rem;
+  font-weight: 400;
+  color: map-get(colors.$colors, #{$type}-50);
+  background-color: map-get(colors.$colors, #{$type}-600);
+  outline: none;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 10px 16px;
+  cursor: text;
+  transition: all 0.35s ease;
+
+  &:hover {
+    background-color: map-get(colors.$colors, #{$type}-500);
+  }
+
+  &:focus,
+  &:focus-visible {
+    transition: outline-offset 0s;
+    background-color: map-get(colors.$colors, #{$type}-500);
+    outline: 2px solid map-get(colors.$colors, #{$type}-500);
+    outline-offset: 3px;
+  }
+
+  &[error='true'] {
+    background-color: colors.$error-600;
+    border-color: colors.$error-600;
+
+    &:hover {
+      background-color: colors.$error-500;
+      border-color: colors.$error-500;
+    }
+
+    &:focus,
+    &:focus-visible {
+      background-color: colors.$error-500;
+      border-color: colors.$error-500;
+      outline-color: colors.$error-500;
+    }
+  }
+}
+
+@mixin input-outlined-default {
+  font-size: 1rem;
+  font-weight: 400;
+  color: colors.$neutral-50;
+  background-color: transparent;
+  outline: none;
+  border: 1px solid colors.$neutral-500;
+  border-radius: 10px;
+  padding: 10px 16px;
+  cursor: text;
+  transition: all 0.35s ease;
+
+  &:hover {
+    border-color: colors.$neutral-300;
+  }
+
+  &:focus,
+  &:focus-visible {
+    transition: outline-offset 0s;
+    border-color: colors.$neutral-300;
+    outline: 2px solid colors.$neutral-300;
+    outline-offset: 3px;
+  }
+
+  &[error='true'] {
+    border-color: colors.$error-600;
+
+    &:hover {
+      border-color: colors.$error-500;
+    }
+
+    &:focus,
+    &:focus-visible {
+      border-color: colors.$error-500;
+      outline-color: colors.$error-500;
+    }
+  }
+}
+
+@mixin input-filled-default {
+  font-size: 1rem;
+  font-weight: 400;
+  color: colors.$neutral-50;
+  background-color: colors.$neutral-500;
+  outline: none;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 10px 16px;
+  cursor: text;
+  transition: all 0.35s ease;
+
+  &:hover {
+    background-color: colors.$neutral-300;
+  }
+
+  &:focus,
+  &:focus-visible {
+    transition: outline-offset 0s;
+    background-color: colors.$neutral-300;
+    outline: 2px solid colors.$neutral-300;
+    outline-offset: 3px;
+  }
+
+  &[error='true'] {
+    background-color: colors.$error-600;
+    border-color: colors.$error-600;
+
+    &:hover {
+      background-color: colors.$error-500;
+      border-color: colors.$error-500;
+    }
+
+    &:focus,
+    &:focus-visible {
+      background-color: colors.$error-500;
+      border-color: colors.$error-500;
+      outline-color: colors.$error-500;
+    }
+  }
+}
+
+@each $color in $colors {
+  [input-outlined-#{$color}] {
+    @include input-outlined($color);
+  }
+}
+
+@each $color in $colors {
+  [input-filled-#{$color}] {
+    @include input-filled($color);
+  }
+}
+
+[input-outlined-default] {
+  @include input-outlined-default();
+}
+
+[input-filled-default] {
+  @include input-filled-default();
+}

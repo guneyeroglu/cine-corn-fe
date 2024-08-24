@@ -1,4 +1,4 @@
-@use '../../../assets/styles/variables' as colors;
+@use '../../../assets/styles/utils/variables' as colors;
 
 :host {
   display: inline-flex;
@@ -116,34 +116,6 @@
       justify-content: flex-end;
       align-items: center;
       gap: 16px;
-
-      button {
-        background-color: transparent;
-        border: none;
-        outline: none;
-        color: colors.$text-color;
-        cursor: pointer;
-        transition: all 0.35s ease;
-
-        &.search {
-          padding: 10px;
-          border-radius: 50%;
-
-          &:hover {
-            background-color: colors.$primary-500;
-          }
-        }
-      }
-
-      a {
-        padding: 10px 16px;
-        border-radius: 10px;
-        transition: all 0.35s ease;
-
-        &:hover {
-          background-color: colors.$primary-500;
-        }
-      }
     }
   }
 }
