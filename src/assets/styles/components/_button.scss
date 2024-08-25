@@ -20,7 +20,7 @@ $colors: primary, secondary, success, error, info, warning;
   transition: all 0.35s ease;
 
   &:hover {
-    background-color: map-get(colors.$colors, #{$type}-700);
+    background-color: map-get(colors.$colors, #{$type}-600);
   }
 
   &[icon] {
@@ -34,7 +34,7 @@ $colors: primary, secondary, success, error, info, warning;
   color: map-get(colors.$colors, #{$type}-50);
   background-color: transparent;
   outline: none;
-  border: 1px solid map-get(colors.$colors, #{$type}-700);
+  border: 1px solid map-get(colors.$colors, #{$type}-600);
   border-radius: 10px;
   padding: 9px 15px;
   cursor: pointer;

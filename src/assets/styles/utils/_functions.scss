@@ -37,3 +37,17 @@
 @function convert-to-rgba($color, $opacity: 1) {
   @return rgba($color, $opacity);
 }
+
+@mixin opacity-border($position, $px: 0, $color: colors.$white-20) {
+  &::before {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    height: 1px;
+    #{$position}: $px;
+    background: linear-gradient(to right, transparent, $color, transparent);
+    border-radius: 16px;
+    transition: all 0.35s ease;
+  }
+}

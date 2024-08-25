@@ -1,5 +1,49 @@
+@use './assets/styles/utils/variables' as colors;
 @import './assets/styles/main.scss';
+
+.background {
+  content: '';
+  position: fixed;
+  width: 60%;
+  height: 100%;
+  left: 20%;
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    colors.$primary-800 0deg,
+    colors.$primary-500 125deg,
+    colors.$secondary-600 230deg,
+    colors.$secondary-300 360deg
+  );
+  z-index: -1;
+  filter: blur(200px);
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(50% 50% at 50% 50%, transparent, colors.$black-65);
+    z-index: -1;
+  }
+}
 
 .responsive-container {
   @include responsive-container();
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fade-in 1s forwards;
+  animation-delay: var(--animation-delay, 250ms);
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

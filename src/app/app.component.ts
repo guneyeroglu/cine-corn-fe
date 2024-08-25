@@ -11,6 +11,4 @@ import { CineCornFooterComponent } from './components/footer/footer.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class CineCornAppComponent {
-  title = 'cine-corn-fe';
-}
+export class CineCornAppComponent {}

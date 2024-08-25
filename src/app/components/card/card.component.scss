@@ -1,0 +1,18 @@
+@use '../../../assets/styles/utils/variables' as colors;
+@import '../../../assets/styles/utils/functions';
+
+:host {
+  display: inline-flex;
+
+  .card {
+    position: relative;
+    min-width: 500px;
+    width: 100%;
+    border: 1px solid colors.$neutral-500;
+    background-color: colors.$black-10;
+    box-shadow: 0px 1px 40px colors.$black-30;
+    border-radius: 10px;
+    padding: 16px 24px;
+    @include opacity-border(top, -1px, colors.$white-50);
+  }
+}

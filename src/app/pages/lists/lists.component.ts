@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-lists',
+  selector: 'cine-corn-lists',
   standalone: true,
   imports: [],
   templateUrl: './lists.component.html',
   styleUrl: './lists.component.scss',
 })
-export class ListsComponent {}
+export class CineCornListsComponent {}

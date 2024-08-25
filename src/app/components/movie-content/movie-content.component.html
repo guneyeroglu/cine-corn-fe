@@ -1,0 +1,10 @@
+<div class="content">
+  <h3 class="content__title">{{ title }}</h3>
+  <div class="content__movies">
+    <ul class="list">
+      <li *ngFor="let movie of movies">
+        <cine-corn-movie-card [movie]="movie" />
+      </li>
+    </ul>
+  </div>
+</div>

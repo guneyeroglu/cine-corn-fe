@@ -1,0 +1,20 @@
+:host {
+  display: inline-flex;
+  width: 100%;
+  margin-top: 10%;
+
+  .register {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: stretch;
+      gap: 24px;
+    }
+  }
+}

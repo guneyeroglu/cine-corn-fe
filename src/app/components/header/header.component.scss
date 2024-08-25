@@ -1,20 +1,14 @@
 @use '../../../assets/styles/utils/variables' as colors;
+@import '../../../assets/styles/utils/functions';
 
 :host {
   display: inline-flex;
   position: sticky;
   top: 0;
+  z-index: 9999;
   padding-top: 10px;
   padding-bottom: 10px;
-
-  &::before {
-    content: '';
-    position: absolute;
-    background: linear-gradient(to right, transparent, colors.$white-20, transparent);
-    height: 1px;
-    width: 100%;
-    bottom: 0;
-  }
+  @include opacity-border(bottom);
 
   &::after {
     content: '';

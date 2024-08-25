@@ -1,1 +1,12 @@
-<div>movie-card works!</div>
+<a class="card" routerLink="{{ moviePath }}">
+  <div class="card__header">
+    <cine-corn-icon icon="star" />
+    <span>{{ movie.point }}</span>
+  </div>
+  <div class="card__image">
+    <img src="{{ movie.imageSrc }}" alt="{{ movie.title }}" />
+  </div>
+  <div class="card__footer">
+    <span>{{ movie.title }}</span>
+  </div>
+</a>

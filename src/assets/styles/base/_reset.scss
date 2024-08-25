@@ -28,31 +28,6 @@ body {
   background-position: center top;
   min-height: 100dvh;
   height: 100%;
-
-  &::before {
-    content: '';
-    position: fixed;
-    width: 60%;
-    height: 100%;
-    left: 20%;
-    background: conic-gradient(
-      from 180deg at 50% 50%,
-      colors.$primary-800 0deg,
-      colors.$primary-500 125deg,
-      colors.$secondary-600 230deg,
-      colors.$secondary-300 360deg
-    );
-    z-index: -1;
-    filter: blur(200px);
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(50% 50% at 50% 50%, transparent, colors.$black-65);
-    z-index: -1;
-  }
 }
 
 a {
@@ -62,11 +37,4 @@ a {
 
 ul {
   list-style: none;
-}
-
-cine-corn-icon {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
 }

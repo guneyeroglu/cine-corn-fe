@@ -2,47 +2,47 @@ import { Routes } from '@angular/router';
 
 import { APP_ROUTES } from './global/enums';
 import {
-  FavoritesComponent,
-  HomeComponent,
-  ListDetailsComponent,
-  ListsComponent,
-  LoginComponent,
-  MovieDetailsComponent,
-  MoviesComponent,
-  RegisterComponent,
+  CineCornFavoritesComponent,
+  CineCornHomeComponent,
+  CineCornListDetailsComponent,
+  CineCornListsComponent,
+  CineCornLoginComponent,
+  CineCornMovieDetailsComponent,
+  CineCornMoviesComponent,
+  CineCornRegisterComponent,
 } from './pages';
 
 export const routes: Routes = [
   {
     path: APP_ROUTES.home,
-    component: HomeComponent,
+    component: CineCornHomeComponent,
   },
   {
     path: APP_ROUTES.movies,
-    component: MoviesComponent,
+    component: CineCornMoviesComponent,
   },
   {
     path: APP_ROUTES.movie_details,
-    component: MovieDetailsComponent,
+    component: CineCornMovieDetailsComponent,
   },
   {
     path: APP_ROUTES.favorites,
-    component: FavoritesComponent,
+    component: CineCornFavoritesComponent,
   },
   {
     path: APP_ROUTES.lists,
-    component: ListsComponent,
+    component: CineCornListsComponent,
   },
   {
     path: APP_ROUTES.list_details,
-    component: ListDetailsComponent,
+    component: CineCornListDetailsComponent,
   },
   {
     path: APP_ROUTES.login,
-    component: LoginComponent,
+    component: CineCornLoginComponent,
   },
   {
     path: APP_ROUTES.register,
-    component: RegisterComponent,
+    component: CineCornRegisterComponent,
   },
 ];
