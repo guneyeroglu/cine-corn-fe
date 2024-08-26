@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 
-import { routeConverter } from './global/functions';
 import { APP_ROUTES } from './global/enums';
 import {
   CineCornFavoritesComponent,
