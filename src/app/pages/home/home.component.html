@@ -1,4 +1,14 @@
 <div class="home responsive-container">
-  <cine-corn-movie-content [title]="allMoviesTitle" [movies]="allMoviesDb" />
-  <cine-corn-movie-content [title]="featuredMoviesTitle" [movies]="featuredMoviesDb" />
+  <cine-corn-movie-content
+    class="fade-in"
+    [style]="'--animation-delay: 250ms'"
+    [title]="newMoviesTitle"
+    [movies]="newMoviesDb"
+  />
+  <cine-corn-movie-content
+    class="fade-in"
+    [style]="'--animation-delay: 500ms'"
+    [title]="featuredMoviesTitle"
+    [movies]="featuredMoviesDb"
+  />
 </div>

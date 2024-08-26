@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
-import { IMenuItem } from '../../global/interfaces';
 import { APP_ROUTES } from '../../global/enums';
+import { IMenuItem } from '../../global/interfaces';
 import { CineCornIconComponent } from '../icons/icon.component';
 
 @Component({

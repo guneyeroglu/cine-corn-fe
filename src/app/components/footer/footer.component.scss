@@ -1,0 +1,37 @@
+@use '../../../assets/styles/utils/variables' as colors;
+@import '../../../assets/styles/utils/functions';
+
+:host {
+  display: inline-flex;
+  width: 100%;
+  padding: 10px 0;
+  position: relative;
+  @include opacity-border(top, 0px, colors.$white-50);
+
+  .footer {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__action {
+      outline: none;
+      border: none;
+      background-color: transparent;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+
+    &__text {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: colors.$white-75;
+    }
+  }
+}

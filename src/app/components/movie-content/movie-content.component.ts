@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { IMovie } from '../../global/interfaces';
 import { CineCornMovieCardComponent } from '../movie-card/movie-card.component';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'cine-corn-movie-content',

@@ -1,9 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
+import { routeConverter } from '../../global/functions';
+import { APP_ROUTES } from '../../global/enums';
 import { IMovie } from '../../global/interfaces';
 import { CineCornIconComponent } from '../icons/icon.component';
-import { APP_ROUTES } from '../../global/enums';
 
 @Component({
   selector: 'cine-corn-movie-card',
@@ -17,6 +18,8 @@ export class CineCornMovieCardComponent {
   moviePath: string = '';
 
   ngOnInit() {
-    this.moviePath = APP_ROUTES.movie_details.replace(':id', this.movie?.title ?? '');
+    this.moviePath = routeConverter(
+      APP_ROUTES.movie_details.replace(':id', this.movie?.title ?? ''),
+    );
   }
 }

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
+import { CineCornMovieContentComponent } from '../../components/movie-content/movie-content.component';
 import { movies } from '../../global/consts';
 import { IMovie } from '../../global/interfaces';
-import { CineCornMovieContentComponent } from '../../components/movie-content/movie-content.component';
 
 @Component({
   selector: 'cine-corn-home',
@@ -12,8 +12,8 @@ import { CineCornMovieContentComponent } from '../../components/movie-content/mo
   styleUrl: './home.component.scss',
 })
 export class CineCornHomeComponent {
-  allMoviesTitle: string = 'All Movies';
+  newMoviesTitle: string = 'New on CineCorn';
+  newMoviesDb: IMovie[] = movies;
   featuredMoviesTitle: string = 'Featured Movies';
-  allMoviesDb: IMovie[] = movies;
   featuredMoviesDb: IMovie[] = movies;
 }
