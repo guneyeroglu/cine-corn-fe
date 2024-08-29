@@ -8,8 +8,6 @@
   align-items: flex-start;
 
   span {
-    font-size: 1.125rem;
-
     &:first-child {
       color: convert-to-rgba(colors.$primary-50, 0.5);
       font-weight: 300;
