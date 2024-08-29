@@ -1,0 +1,22 @@
+@use '../../../../assets/styles/utils/variables' as colors;
+@import '../../../../assets/styles/utils/functions';
+
+.text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  span {
+    font-size: 1.125rem;
+
+    &:first-child {
+      color: convert-to-rgba(colors.$primary-50, 0.5);
+      font-weight: 300;
+    }
+
+    &:last-child {
+      margin-top: 4px;
+    }
+  }
+}
