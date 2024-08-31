@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'cine-corn-card',
@@ -7,6 +7,4 @@ import { Component, Input } from '@angular/core';
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss',
 })
-export class CineCornCardComponent {
-  @Input() animationDelay: string = '250ms';
-}
+export class CineCornCardComponent {}

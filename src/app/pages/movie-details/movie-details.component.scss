@@ -82,9 +82,24 @@
         align-items: flex-start;
         gap: 80px;
 
-        img {
+        &-img {
+          position: relative;
           width: 350px;
           height: 500px;
+          border-radius: 10px;
+          overflow: hidden;
+
+          img {
+            width: 350px;
+            height: 500px;
+          }
+
+          &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(50% 50% at 50% 50%, transparent, colors.$black-50);
+          }
         }
 
         .box {
