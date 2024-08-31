@@ -2,7 +2,6 @@
 @import './assets/styles/main.scss';
 
 .background {
-  content: '';
   position: fixed;
   width: 60%;
   height: 100%;
@@ -21,7 +20,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(50% 50% at 50% 50%, transparent, colors.$black-65);
+    background: radial-gradient(50% 50% at 50% 50%, transparent, colors.$black-75);
     z-index: -1;
   }
 }
