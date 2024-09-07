@@ -64,8 +64,8 @@
 
     &__divider {
       position: relative;
-      @include opacity-border(top, -1px, colors.$white-50);
       padding-bottom: 5%;
+      @include opacity-border(top, -1px, colors.$white-50);
     }
 
     &__content {
