@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 import { routeConverter } from '../../global/functions';
 import { APP_ROUTES } from '../../global/enums';
@@ -9,17 +10,20 @@ import { CineCornIconComponent } from '../icons/icon.component';
 @Component({
   selector: 'cine-corn-movie-card',
   standalone: true,
-  imports: [RouterLink, CineCornIconComponent],
+  imports: [RouterLink, NgxSkeletonLoaderModule, CineCornIconComponent],
   templateUrl: './movie-card.component.html',
   styleUrl: './movie-card.component.scss',
 })
 export class CineCornMovieCardComponent {
-  @Input() movie!: IMovie; //! null, service.
+  @Input() movie!: IMovie;
+  isImageLoaded: boolean = false;
   moviePath: string = '';
 
   ngOnInit() {
-    this.moviePath = routeConverter(
-      APP_ROUTES.movie_details.replace(':id', this.movie?.title ?? ''),
-    );
+    this.moviePath = routeConverter(APP_ROUTES.movie_details.replace(':id', this.movie.id));
+  }
+
+  load() {
+    this.isImageLoaded = true;
   }
 }

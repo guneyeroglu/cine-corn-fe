@@ -34,6 +34,87 @@
   }
 }
 
+@mixin responsive-list() {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 16px;
+
+  li {
+    @include calculate-width(8, 16px);
+  }
+
+  @media screen and (max-width: 1800px) {
+    li {
+      @include calculate-width(7, 16px);
+
+      &.loading:nth-child(n + 8) {
+        display: none;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1440px) {
+    li {
+      @include calculate-width(5, 16px);
+
+      &.loading:nth-child(n + 6) {
+        display: none;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    gap: 12px;
+
+    li {
+      @include calculate-width(4, 12px);
+
+      &.loading:nth-child(n + 5) {
+        display: none;
+      }
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    li {
+      @include calculate-width(3, 12px);
+
+      &.loading:nth-child(n + 4) {
+        display: none;
+      }
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    gap: 8px;
+
+    li {
+      @include calculate-width(2, 8px);
+
+      &.loading:nth-child(n + 3) {
+        display: none;
+      }
+    }
+  }
+
+  @media screen and (max-width: 425px) {
+    gap: 32px;
+    justify-content: center;
+
+    li {
+      max-width: 225px;
+      @include calculate-width(1, 32px);
+
+      &.loading:nth-child(n + 2) {
+        display: none;
+      }
+    }
+  }
+}
+
 @function convert-to-rgba($color, $opacity: 1) {
   @return rgba($color, $opacity);
 }

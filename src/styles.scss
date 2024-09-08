@@ -29,6 +29,10 @@
   @include responsive-container();
 }
 
+.responsive-list {
+  @include responsive-list();
+}
+
 .fade-in {
   opacity: 0;
   transform: translateY(-20px);

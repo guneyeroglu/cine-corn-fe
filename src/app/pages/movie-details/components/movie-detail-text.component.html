@@ -1,4 +1,19 @@
 <div class="text">
   <span>{{ title }}</span>
-  <span>{{ subtitle }}</span>
+  <span>
+    @if (isLoading) {
+      <ngx-skeleton-loader
+        count="1"
+        animation="progress"
+        [theme]="{
+          width: '200px',
+          height: '24px',
+          marginBottom: 0,
+          backgroundColor: 'rgba(255, 255, 255, 0.4)',
+        }"
+      />
+    } @else {
+      {{ subtitle }}
+    }
+  </span>
 </div>

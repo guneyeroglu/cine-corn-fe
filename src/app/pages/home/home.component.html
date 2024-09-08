@@ -2,13 +2,15 @@
   <cine-corn-movie-content
     class="fade-in"
     [style]="'--animation-delay: 250ms'"
-    [title]="newMoviesTitle"
-    [movies]="newMoviesDb"
+    [title]="featuredMoviesTitle"
+    [movies]="featuredMovie"
+    [isLoading]="isLoadingForFeaturedMovie"
   />
   <cine-corn-movie-content
     class="fade-in"
     [style]="'--animation-delay: 500ms'"
-    [title]="featuredMoviesTitle"
-    [movies]="featuredMoviesDb"
+    [title]="newMoviesTitle"
+    [movies]="newMovies"
+    [isLoading]="isLoadingForNewMovies"
   />
 </div>

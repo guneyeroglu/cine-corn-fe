@@ -1,8 +1,6 @@
 export interface IMovie {
-  id: number;
-  title: string;
-  imageSrc: string;
-  year: number;
-  point: number;
-  genre: string;
+  id: string;
+  name: string;
+  point: string;
+  posterImage: string;
 }

@@ -16,5 +16,11 @@
     &:last-child {
       margin-top: 4px;
     }
+
+    ngx-skeleton-loader {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
   }
 }

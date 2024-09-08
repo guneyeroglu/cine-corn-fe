@@ -1,3 +1,3 @@
-export function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+export function scrollToTop(behavior: ScrollBehavior = 'instant') {
+  window.scrollTo({ top: 0, behavior });
 }

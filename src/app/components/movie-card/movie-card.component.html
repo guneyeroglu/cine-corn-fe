@@ -4,9 +4,31 @@
     <span>{{ movie.point }}</span>
   </div>
   <div class="card__image">
-    <img src="{{ movie.imageSrc }}" alt="{{ movie.title }}" />
+    <img
+      class="{{ !isImageLoaded ? 'hidden' : '' }}"
+      [src]="movie.posterImage"
+      [alt]="movie.name"
+      loading="lazy"
+      (load)="load()"
+    />
+    @if (!isImageLoaded) {
+      <ngx-skeleton-loader
+        count="1"
+        animation="progress"
+        [theme]="{
+          position: 'absolute',
+          inset: 0,
+          width: 'auto',
+          height: 'auto',
+          marginBottom: 0,
+          borderRadius: '6px',
+          backgroundColor: 'rgba(255, 255, 255, 0.4)',
+          cursor: 'pointer',
+        }"
+      />
+    }
   </div>
   <div class="card__footer">
-    <span>{{ movie.title }}</span>
+    <span>{{ movie.name }}</span>
   </div>
 </a>

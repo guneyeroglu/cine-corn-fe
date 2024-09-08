@@ -1,50 +1,117 @@
 <div class="details responsive-container">
   <div class="details__header">
-    <div class="details__header--img fade-in" style="--animation-delay: 250ms">
+    <div
+      class="details__header--img fade-in {{ !isBannerLoaded ? 'hidden' : '' }}"
+      style="--animation-delay: 250ms"
+    >
       <img
-        src="https://i0.wp.com/jasonsmovieblog.com/wp-content/uploads/2021/12/spider-man-no-way-home-61a645a1f10ca-e1640181448168.jpg"
-        alt="cover"
+        [src]="movieDetails?.bannerImage ?? ''"
+        [alt]="movieDetails?.name ?? ''"
+        loading="lazy"
+        (load)="bannerLoad()"
       />
+      @if (!isBannerLoaded) {
+        <ngx-skeleton-loader
+          count="1"
+          animation="progress"
+          [theme]="{
+            position: 'absolute',
+            inset: 0,
+            width: 'auto',
+            height: 'auto',
+            marginBottom: 0,
+            borderRadius: '10px',
+            backgroundColor: 'rgba(255, 255, 255, 0.4)',
+          }"
+        />
+      }
     </div>
     <div class="fade-in" style="--animation-delay: 500ms">
       <div class="details__header--title">
-        <span>Spider-Man: No Way Home</span>
+        <span>
+          @if (!isLoadingMovieDetails) {
+            {{ movieDetails?.name }}
+          } @else {
+            <ngx-skeleton-loader
+              count="1"
+              animation="progress"
+              [theme]="{
+                width: '200px',
+                height: '21px',
+                marginBottom: 0,
+                borderRadius: '10px',
+                backgroundColor: 'rgba(255, 255, 255, 0.4)',
+              }"
+            />
+          }
+        </span>
       </div>
     </div>
   </div>
   <div class="details__divider fade-in" style="--animation-delay: 750ms"></div>
   <div class="details__content">
     <div class="details__content--paper">
-      <div class="details__content--paper-img fade-in" style="--animation-delay: 1000ms">
+      <div
+        class="details__content--paper-img fade-in {{ !isPosterLoaded ? 'hidden' : '' }}"
+        style="--animation-delay: 1000ms"
+      >
         <img
-          src="https://i.tmgrup.com.tr/es/2022/02/16/spider-man-no-way-homedan-yeni-rekor-1645013604769.jpeg"
-          alt="poster"
+          [src]="movieDetails?.posterImage ?? ''"
+          [alt]="movieDetails?.name ?? ''"
+          loading="lazy"
+          (load)="posterLoad()"
         />
+        @if (!isPosterLoaded) {
+          <ngx-skeleton-loader
+            count="1"
+            animation="progress"
+            [theme]="{
+              position: 'absolute',
+              inset: 0,
+              width: 'auto',
+              height: 'auto',
+              marginBottom: 0,
+              borderRadius: '10px',
+              backgroundColor: 'rgba(255, 255, 255, 0.4)',
+            }"
+          />
+        }
       </div>
       <div class="box">
         <cine-corn-movie-detail-text
           class="fade-in"
           title="Description"
-          subtitle="With great power there must also come great responsibility."
+          [subtitle]="movieDetails?.description ?? ''"
+          [isLoading]="isLoadingMovieDetails"
           style="--animation-delay: 1250ms"
         />
         <cine-corn-movie-detail-text
           class="fade-in"
           title="Release Date"
-          subtitle="17.12.2021"
+          [subtitle]="releaseDate"
+          [isLoading]="isLoadingMovieDetails"
           style="--animation-delay: 1500ms"
         />
         <cine-corn-movie-detail-text
           class="fade-in"
           title="Run Time"
-          subtitle="148 min"
+          [subtitle]="runTime"
+          [isLoading]="isLoadingMovieDetails"
           style="--animation-delay: 1750ms"
         />
         <cine-corn-movie-detail-text
           class="fade-in"
-          title="Genres"
-          subtitle="Adventure, Sci-Fi, Action"
+          title="Stars"
+          [subtitle]="starNames"
+          [isLoading]="isLoadingMovieDetails"
           style="--animation-delay: 2000ms"
+        />
+        <cine-corn-movie-detail-text
+          class="fade-in"
+          title="Genres"
+          [subtitle]="genreNames"
+          [isLoading]="isLoadingMovieDetails"
+          style="--animation-delay: 2250ms"
         />
       </div>
     </div>
