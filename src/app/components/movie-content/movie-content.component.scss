@@ -18,4 +18,12 @@
       @include opacity-border(bottom, 0px, colors.$white-50);
     }
   }
+
+  @media screen and (max-width: 600px) {
+    .content {
+      &__title {
+        text-align: center;
+      }
+    }
+  }
 }
