@@ -36,13 +36,12 @@
       justify-content: flex-start;
       align-items: center;
       gap: 8px;
-      color: colors.$warning-400;
       z-index: 3;
 
       span {
         font-size: 1.125rem;
         font-weight: 400;
-        color: inherit;
+        color: colors.$warning-400;
       }
     }
 
