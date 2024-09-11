@@ -26,8 +26,8 @@
         />
       }
     </div>
-    <div class="fade-in" style="--animation-delay: 500ms">
-      <div class="details__header--title">
+    <div class="fade-in details__header--title" style="--animation-delay: 500ms">
+      <div class="details__header--title-box">
         <span>
           @if (!isLoadingMovieDetails) {
             {{ movieDetails?.name }}
@@ -51,10 +51,7 @@
   <div class="details__divider fade-in" style="--animation-delay: 750ms"></div>
   <div class="details__content">
     <div class="details__content--paper">
-      <div
-        class="details__content--paper-img fade-in {{ !isPosterLoaded ? 'hidden' : '' }}"
-        style="--animation-delay: 1000ms"
-      >
+      <div class="details__content--paper-img fade-in {{ !isPosterLoaded ? 'hidden' : '' }}">
         <img
           [src]="movieDetails?.posterImage ?? ''"
           [alt]="movieDetails?.name ?? ''"

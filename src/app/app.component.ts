@@ -10,7 +10,17 @@ import { scrollToTop } from './global/functions';
   standalone: true,
   imports: [RouterOutlet, CineCornHeaderComponent, CineCornFooterComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  styles: `
+    :host {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+
+      .grow {
+        flex-grow: 1;
+      }
+    }
+  `,
 })
 export class CineCornAppComponent {
   constructor(private router: Router) {}
