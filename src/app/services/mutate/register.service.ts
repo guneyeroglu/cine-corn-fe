@@ -3,16 +3,16 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../environment';
-import { IMovieDetails, IResponse } from '../../global/interfaces';
+import { IRegister, IResponse } from '../../global/interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
-export class MovieDetailsService {
+export class RegisterService {
   private apiUrl: string = environment.apiUrl;
   constructor(private http: HttpClient) {}
 
-  getMovieDetails(id: string): Observable<IResponse<IMovieDetails>> {
-    return this.http.post<IResponse<IMovieDetails>>(`${this.apiUrl}/movie-details`, { id });
+  register(user: IRegister): Observable<IResponse> {
+    return this.http.post<IResponse>(`${this.apiUrl}/register`, { ...user });
   }
 }

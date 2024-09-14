@@ -1,0 +1,41 @@
+@use '../../../assets/styles/utils/variables' as colors;
+
+.snackbar-container {
+  position: fixed;
+  top: 0;
+  right: 50%;
+  transform: translate(50%, calc(70px + 24px));
+  z-index: 9999;
+
+  .snackbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-width: 200px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    opacity: 0.9;
+    cursor: pointer;
+
+    &.success {
+      background-color: colors.$success-500;
+      color: colors.$success-50;
+    }
+
+    &.error {
+      background-color: colors.$error-500;
+      color: colors.$error-50;
+    }
+
+    &.warning {
+      background-color: colors.$warning-500;
+      color: colors.$warning-50;
+    }
+
+    &.info {
+      background-color: colors.$info-500;
+      color: colors.$info-50;
+    }
+  }
+}

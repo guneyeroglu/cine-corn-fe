@@ -128,7 +128,7 @@
     height: 1px;
     #{$position}: $px;
     background: linear-gradient(to right, transparent, $color, transparent);
-    border-radius: 16px;
+    border-radius: 10px;
     transition: all 0.35s ease;
   }
 }

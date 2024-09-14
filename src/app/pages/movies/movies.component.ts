@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { CineCornMovieContentComponent } from '../../components/movie-content/movie-content.component';
-import { IMovie, IResponse } from '../../global/interfaces';
 import { MovieService } from '../../services/query';
-import { Observable } from 'rxjs';
 import { manageLoadingState } from '../../global/functions';
+import { IError, IMovie, IResponse } from '../../global/interfaces';
 
 @Component({
   selector: 'cine-corn-movies',
@@ -35,7 +35,7 @@ export class CineCornMoviesComponent {
           observer.next(res.data);
           observer.complete();
         },
-        error: err => {
+        error: (err: IError) => {
           observer.error(err);
         },
       });

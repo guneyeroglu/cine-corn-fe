@@ -11,8 +11,13 @@
     "format": "npx prettier --write ."
   },
   "private": true,
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
-    "*.{js,ts,jsx,tsx,css,json,md}": "prettier --write"
+    "*.{js,ts,jsx,tsx,css,json,md}": "npx prettier --write ."
   },
   "dependencies": {
     "@angular/animations": "^18.1.0",
@@ -34,13 +39,14 @@
     "@angular/cli": "^18.1.3",
     "@angular/compiler-cli": "^18.1.0",
     "@types/jasmine": "~5.1.0",
-    "husky": "^9.1.4",
+    "husky": "^9.1.6",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
     "typescript": "~5.5.2"
   }

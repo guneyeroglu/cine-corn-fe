@@ -2,7 +2,12 @@
 
 $colors: primary, secondary, success, error, info, warning;
 
+@mixin with-icon() {
+  padding: 10px 48px 10px 16px;
+}
+
 @mixin input-outlined($type) {
+  width: 100%;
   font-size: 1rem;
   font-weight: 400;
   color: map-get(colors.$colors, #{$type}-50);
@@ -39,9 +44,14 @@ $colors: primary, secondary, success, error, info, warning;
       outline-color: colors.$error-500;
     }
   }
+
+  &[with-icon] {
+    @include with-icon();
+  }
 }
 
 @mixin input-filled($type) {
+  width: 100%;
   font-size: 1rem;
   font-weight: 400;
   color: map-get(colors.$colors, #{$type}-50);
@@ -81,9 +91,14 @@ $colors: primary, secondary, success, error, info, warning;
       outline-color: colors.$error-500;
     }
   }
+
+  &[with-icon] {
+    @include with-icon();
+  }
 }
 
 @mixin input-outlined-default {
+  width: 100%;
   font-size: 1rem;
   font-weight: 400;
   color: colors.$neutral-50;
@@ -120,9 +135,14 @@ $colors: primary, secondary, success, error, info, warning;
       outline-color: colors.$error-500;
     }
   }
+
+  &[with-icon] {
+    @include with-icon();
+  }
 }
 
 @mixin input-filled-default {
+  width: 100%;
   font-size: 1rem;
   font-weight: 400;
   color: colors.$neutral-50;
@@ -161,6 +181,10 @@ $colors: primary, secondary, success, error, info, warning;
       border-color: colors.$error-500;
       outline-color: colors.$error-500;
     }
+  }
+
+  &[with-icon] {
+    @include with-icon();
   }
 }
 

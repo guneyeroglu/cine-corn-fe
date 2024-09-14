@@ -1,4 +1,3 @@
-export * from './favorites/favorites.component';
 export * from './home/home.component';
 export * from './list-details/list-details.component';
 export * from './lists/lists.component';

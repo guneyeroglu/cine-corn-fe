@@ -7,17 +7,19 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
   imports: [NgxSkeletonLoaderModule],
   template: `
     @if (!isIconLoaded) {
-      <ngx-skeleton-loader
-        count="1"
-        animation="progress"
-        [theme]="{
-          width: size,
-          height: size,
-          marginBottom: 0,
-          borderRadius: '50%',
-          backgroundColor: color,
-        }"
-      />
+      @if (skeleton) {
+        <ngx-skeleton-loader
+          count="1"
+          animation="progress"
+          [theme]="{
+            width: size,
+            height: size,
+            marginBottom: 0,
+            borderRadius: '50%',
+            backgroundColor: color,
+          }"
+        />
+      }
     } @else {
       <span class="material-symbols-outlined" [style]="{ fontSize: size, color }">{{
         isIconLoaded ? icon : ''
@@ -44,6 +46,7 @@ export class CineCornIconComponent {
   @Input() icon!: string;
   @Input() size: string = '24px';
   @Input() color: string = '#ebe9fe';
+  @Input() skeleton: boolean = true;
   isIconLoaded: boolean = false;
 
   ngAfterViewInit() {

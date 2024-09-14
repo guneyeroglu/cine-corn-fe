@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
+import { CineCornMovieContentComponent } from '../../components/movie-content/movie-content.component';
 import { manageLoadingState } from '../../global/functions';
 import { MovieService } from '../../services/query';
 import { MOVIE_TYPE } from '../../global/enums';
-import { IMovie, IResponse } from '../../global/interfaces';
-import { CineCornMovieContentComponent } from '../../components/movie-content/movie-content.component';
+import { IError, IMovie, IResponse } from '../../global/interfaces';
 
 @Component({
   selector: 'cine-corn-home',
@@ -48,7 +48,7 @@ export class CineCornHomeComponent {
           observer.next(res.data);
           observer.complete();
         },
-        error: err => {
+        error: (err: IError) => {
           observer.error(err);
         },
       });

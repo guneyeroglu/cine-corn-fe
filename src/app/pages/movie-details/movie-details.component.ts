@@ -3,10 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { Observable } from 'rxjs';
 
+import { CineCornMovieDetailTextComponent } from './components/movie-detail-text.component';
 import { MovieDetailsService } from '../../services/mutate';
 import { formatDateString, joinArrayToString, manageLoadingState } from '../../global/functions';
-import { IMovieDetails, IResponse } from '../../global/interfaces';
-import { CineCornMovieDetailTextComponent } from './components/movie-detail-text.component';
+import { IError, IMovieDetails, IResponse } from '../../global/interfaces';
 
 @Component({
   selector: 'cine-corn-movie-details',
@@ -51,7 +51,7 @@ export class CineCornMovieDetailsComponent {
           observer.next(res.data);
           observer.complete();
         },
-        error: err => {
+        error: (err: IError) => {
           observer.error(err);
         },
       });

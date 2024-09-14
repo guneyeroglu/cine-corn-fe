@@ -1,23 +1,62 @@
 <div class="login responsive-container">
   <cine-corn-card class="fade-in" style="--animation-delay: 150ms">
-    <form class="form">
+    <form class="form" [formGroup]="myForm" (ngSubmit)="onSubmit()">
       <div class="form__box">
-        <label class="fade-in" style="--animation-delay: 300ms">Username</label>
+        <label
+          for="username"
+          class="fade-in"
+          [class.error-text]="username?.invalid && username?.touched"
+          style="--animation-delay: 300ms"
+          >Username</label
+        >
         <input
+          #usernameInput
+          id="username"
+          formControlName="username"
+          [attr.error]="username?.invalid && username?.touched ? true : false"
           input-outlined-default
           placeholder="your username"
           class="fade-in"
           style="--animation-delay: 450ms"
+          autocomplete="off"
         />
+        @if (username?.invalid && username?.touched && username?.errors) {
+          <small class="error-text">{{ getErrorMessage(username) }}</small>
+        }
       </div>
       <div class="form__box">
-        <label class="fade-in" style="--animation-delay: 600ms">Password</label>
-        <input
-          input-outlined-default
-          placeholder="******"
+        <label
+          for="password"
           class="fade-in"
-          style="--animation-delay: 750ms"
-        />
+          [class.error-text]="password?.invalid && password?.touched"
+          style="--animation-delay: 600ms"
+          >Password</label
+        >
+        <div class="form__box--input fade-in" style="--animation-delay: 750ms">
+          <input
+            #passwordInput
+            id="password"
+            formControlName="password"
+            [attr.error]="password?.invalid && password?.touched"
+            input-outlined-default
+            with-icon
+            [type]="type"
+            [placeholder]="placeholder"
+            autocomplete="off"
+          />
+          <button
+            button-text-primary
+            icon
+            class="form__box--input-icon"
+            type="button"
+            (click)="handleVisibility()"
+          >
+            <cine-corn-icon [icon]="icon" [skeleton]="false" />
+          </button>
+        </div>
+        @if (password?.invalid && password?.touched && password?.errors) {
+          <small class="error-text">{{ getErrorMessage(password) }}</small>
+        }
       </div>
       <button
         button-contained-primary

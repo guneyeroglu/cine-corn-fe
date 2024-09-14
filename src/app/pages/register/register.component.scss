@@ -22,6 +22,18 @@
         justify-content: flex-start;
         align-items: stretch;
         gap: 8px;
+
+        &--input {
+          position: relative;
+
+          &-icon {
+            position: absolute;
+            top: 50%;
+            right: 6px;
+            padding: 6px;
+            transform: translateY(-50%);
+          }
+        }
       }
     }
   }

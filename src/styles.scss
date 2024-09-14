@@ -33,6 +33,14 @@
   @include responsive-list();
 }
 
+.error-text {
+  color: colors.$error-50;
+}
+
+small.error-text {
+  margin-left: 12px;
+}
+
 .fade-in {
   opacity: 0;
   transform: translateY(-20px);
