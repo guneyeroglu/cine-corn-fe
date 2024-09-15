@@ -49,13 +49,13 @@ export class CineCornLoginComponent {
   }
 
   myForm = new FormGroup({
-    username: new FormControl('guneyeroglu', [
+    username: new FormControl('', [
       Validators.required,
       Validators.pattern(/^\S+$/),
       Validators.minLength(3),
       Validators.maxLength(20),
     ]),
-    password: new FormControl('AynenÖyle123..', [
+    password: new FormControl('', [
       Validators.required,
       Validators.pattern(/^\S+$/),
       Validators.minLength(3),
