@@ -1,9 +1,6 @@
 export interface IAuthUser {
   exp: number;
-  role: {
-    id: number;
-    name: string;
-  };
+  role: string;
   userId: string;
   username: string;
 }

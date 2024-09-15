@@ -14,11 +14,11 @@ import { IError, IMovie, IResponse } from '../../global/interfaces';
   styleUrl: './movies.component.scss',
 })
 export class CineCornMoviesComponent {
+  constructor(private movieService: MovieService) {}
+
   title: string = 'All Movies';
   movies: IMovie[] = [];
   isLoading: boolean = true;
-
-  constructor(private movieService: MovieService) {}
 
   ngOnInit() {
     const startTime: number = Date.now();

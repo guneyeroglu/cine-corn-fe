@@ -7,9 +7,8 @@ import { CineCornSnackbarComponent } from '../../components/snackbar/snackbar.co
   providedIn: 'root',
 })
 export class SnackbarService {
-  constructor() {}
-
   private snackbarComponent!: CineCornSnackbarComponent;
+  constructor() {}
 
   register(snackbarComponent: CineCornSnackbarComponent) {
     this.snackbarComponent = snackbarComponent;

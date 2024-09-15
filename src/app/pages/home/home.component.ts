@@ -15,6 +15,8 @@ import { IError, IMovie, IResponse } from '../../global/interfaces';
   styleUrl: './home.component.scss',
 })
 export class CineCornHomeComponent {
+  constructor(private movieService: MovieService) {}
+
   featuredMoviesTitle: string = 'Featured Movies';
   featuredMovie: IMovie[] = [];
   isLoadingForFeaturedMovie: boolean = true;
@@ -24,8 +26,6 @@ export class CineCornHomeComponent {
   newMovies: IMovie[] = [];
   isLoadingForNewMovies: boolean = true;
   newMoviesError: string = '';
-
-  constructor(private movieService: MovieService) {}
 
   ngOnInit() {
     const startTime: number = Date.now();

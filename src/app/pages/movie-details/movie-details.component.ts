@@ -16,16 +16,16 @@ import { IError, IMovieDetails, IResponse } from '../../global/interfaces';
   styleUrl: './movie-details.component.scss',
 })
 export class CineCornMovieDetailsComponent {
-  isLoadingMovieDetails: boolean = true;
-  isBannerLoaded: boolean = false;
-  isPosterLoaded: boolean = false;
-  movieId!: string;
-  movieDetails: IMovieDetails | undefined = undefined;
   constructor(
     private movieDetailsService: MovieDetailsService,
     private route: ActivatedRoute,
   ) {}
 
+  isLoadingMovieDetails: boolean = true;
+  isBannerLoaded: boolean = false;
+  isPosterLoaded: boolean = false;
+  movieId!: string;
+  movieDetails: IMovieDetails | undefined = undefined;
   genreNames: string = '';
   starNames: string = '';
   releaseDate: string = '';

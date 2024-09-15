@@ -110,8 +110,8 @@ export class CineCornLoginComponent {
             this.myForm.reset();
             this.router.navigate([routeConverter(APP_ROUTES.home)]);
           },
-          error: (res: IError) => {
-            this.snackbarService.show(res.error.message, STATUS_TYPE.error);
+          error: (err: IError) => {
+            this.snackbarService.show(err.error.message, STATUS_TYPE.error);
           },
         });
     }

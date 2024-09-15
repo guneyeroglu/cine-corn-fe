@@ -8,11 +8,11 @@ import { IAuthUser, IResponse } from '../../global/interfaces';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthServiceService {
+export class AuthUserService {
   private apiUrl: string = environment.apiUrl;
   constructor(private http: HttpClient) {}
 
-  getAllMovies(): Observable<IResponse<IAuthUser>> {
+  handleAuthUser(): Observable<IResponse<IAuthUser>> {
     const token: string = localStorage.getItem('token') ?? '';
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 

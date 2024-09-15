@@ -162,8 +162,8 @@ export class CineCornRegisterComponent {
             this.visibilityPassword = false;
             this.visibilityConfirmPassword = false;
           },
-          error: (res: IError) => {
-            this.snackbarService.show(res.error.message, STATUS_TYPE.error);
+          error: (err: IError) => {
+            this.snackbarService.show(err.error.message, STATUS_TYPE.error);
           },
         });
     }
