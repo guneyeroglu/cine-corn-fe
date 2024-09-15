@@ -6,13 +6,12 @@ import {
   Validators,
   AbstractControl,
 } from '@angular/forms';
+import { Store } from '@ngrx/store';
 
 import { CineCornCardComponent } from '../../components/card/card.component';
 import { CineCornIconComponent } from '../../components/icons/icon.component';
 import { RegisterService } from '../../services/mutate';
-import { SnackbarService } from '../../services/others';
-import { STATUS_TYPE } from '../../global/enums';
-import { IError } from '../../global/interfaces';
+import { IError, ISnackbarState } from '../../global/interfaces';
 
 @Component({
   selector: 'cine-corn-register',
@@ -28,7 +27,7 @@ export class CineCornRegisterComponent {
 
   constructor(
     private registerService: RegisterService,
-    private snackbarService: SnackbarService,
+    private store: Store<{ snackbar: ISnackbarState }>,
   ) {}
 
   visibilityPassword: boolean = false;
@@ -157,13 +156,13 @@ export class CineCornRegisterComponent {
         })
         .subscribe({
           next: res => {
-            this.snackbarService.show(res.message, STATUS_TYPE.success);
+            // this.snackbarService.show(res.message, STATUS_TYPE.success);
             this.myForm.reset();
             this.visibilityPassword = false;
             this.visibilityConfirmPassword = false;
           },
           error: (err: IError) => {
-            this.snackbarService.show(err.error.message, STATUS_TYPE.error);
+            // this.snackbarService.show(err.error.message, STATUS_TYPE.error);
           },
         });
     }

@@ -1,7 +1,7 @@
-@if (open) {
+@if (snackbarState.open) {
   <div class="snackbar-container">
-    <div class="snackbar" [ngClass]="type" (click)="closeSnackbar()">
-      {{ text }}
+    <div class="snackbar" [ngClass]="snackbarState.statusType" (click)="closeSnackbar()">
+      {{ snackbarState.text }}
     </div>
   </div>
 }

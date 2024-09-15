@@ -15,7 +15,11 @@
     <button button-text-primary icon>
       <cine-corn-icon icon="search" />
     </button>
-    <a button-text-primary routerLink="{{ loginPath }}">Login</a>
-    <a button-text-primary routerLink="{{ registerPath }}">Register</a>
+    @if (user()) {
+      <span>{{ user()?.username }}</span>
+    } @else {
+      <a button-text-primary routerLink="{{ loginPath }}">Login</a>
+      <a button-text-primary routerLink="{{ registerPath }}">Register</a>
+    }
   </div>
 </header>

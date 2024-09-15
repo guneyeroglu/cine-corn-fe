@@ -1,7 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
 
-import { STATUS_TYPE } from '../../global/enums';
+import { ISnackbarState } from '../../global/interfaces';
+import { onCloseSnackbar } from '../../store/actions';
 
 @Component({
   selector: 'cine-corn-snackbar',
@@ -11,29 +14,41 @@ import { STATUS_TYPE } from '../../global/enums';
   styleUrl: './snackbar.component.scss',
 })
 export class CineCornSnackbarComponent {
-  @Input() open!: boolean;
-  @Input() text!: string;
-  @Input() type!: keyof typeof STATUS_TYPE;
-  @Input() duration!: number;
-
   private timeoutId: any;
+  private subscription: Subscription = new Subscription();
+  constructor(private store: Store<{ snackbar: ISnackbarState }>) {
+    this.subscription.add(
+      this.store.select('snackbar').subscribe((state: ISnackbarState) => {
+        this.snackbarState = state;
+
+        if (this.snackbarState.open) {
+          this.showSnackbar();
+        }
+      }),
+    );
+  }
+
+  snackbarState!: ISnackbarState;
 
   showSnackbar() {
     if (this.timeoutId) {
       clearTimeout(this.timeoutId);
-      this.closeSnackbar();
     }
-
-    this.open = true;
 
     this.timeoutId = setTimeout(() => {
       this.closeSnackbar();
-      console.log('girdi');
-    }, this.duration);
+    }, this.snackbarState.duration);
   }
 
   closeSnackbar() {
-    this.open = false;
+    this.store.dispatch(onCloseSnackbar());
+    clearTimeout(this.timeoutId);
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
     clearTimeout(this.timeoutId);
   }
 }

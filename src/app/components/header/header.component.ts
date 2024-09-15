@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Store } from '@ngrx/store';
 
 import { APP_ROUTES } from '../../global/enums';
-import { IMenuItem } from '../../global/interfaces';
+import { IAuthUser, IAuthUserState, IMenuItem } from '../../global/interfaces';
 import { CineCornIconComponent } from '../icons/icon.component';
 
 @Component({
@@ -13,6 +14,11 @@ import { CineCornIconComponent } from '../icons/icon.component';
   styleUrl: './header.component.scss',
 })
 export class CineCornHeaderComponent {
+  constructor(private store: Store<{ user: IAuthUserState }>) {
+    this.store.select('user').subscribe((state: IAuthUserState) => {
+      this.user.set(state.user);
+    });
+  }
   homePath: string = APP_ROUTES.home;
   loginPath: string = APP_ROUTES.login;
   registerPath: string = APP_ROUTES.register;
@@ -26,4 +32,6 @@ export class CineCornHeaderComponent {
       path: APP_ROUTES.movies,
     },
   ];
+
+  user = signal<IAuthUser | null>(null);
 }

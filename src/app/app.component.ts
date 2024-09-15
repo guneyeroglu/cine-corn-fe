@@ -1,13 +1,15 @@
 import { Component, signal, ViewChild } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { filter, Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 import { CineCornSnackbarComponent } from './components/snackbar/snackbar.component';
 import { CineCornHeaderComponent } from './components/header/header.component';
 import { CineCornFooterComponent } from './components/footer/footer.component';
 import { scrollToTop } from './global/functions';
-import { SnackbarService } from './services/others/snackbar.service';
 import { AuthUserService } from './services/query';
-import { IAuthUser, IError, IResponse } from './global/interfaces';
+import { IAuthUser, IAuthUserState, IResponse } from './global/interfaces';
+import { setAuthUser } from './store/actions';
 
 @Component({
   selector: 'cine-corn-app',
@@ -34,36 +36,62 @@ import { IAuthUser, IError, IResponse } from './global/interfaces';
 })
 export class CineCornAppComponent {
   @ViewChild(CineCornSnackbarComponent) snackbarComponent!: CineCornSnackbarComponent;
+  private subscription: Subscription = new Subscription();
 
   constructor(
     private router: Router,
-    private snackbarService: SnackbarService,
     private authUserService: AuthUserService,
-  ) {}
+    private store: Store<{ user: IAuthUserState }>,
+  ) {
+    this.subscription.add(
+      this.store.select('user').subscribe((state: IAuthUserState) => {
+        this.user.set(state.user);
+      }),
+    );
+  }
 
   user = signal<IAuthUser | null>(null);
 
   ngOnInit() {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        scrollToTop();
-      }
+    this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(() => {
+      scrollToTop();
+      this.handleAuthService();
     });
-    this.handleAuthService();
-  }
-
-  ngAfterViewInit() {
-    this.snackbarService.register(this.snackbarComponent);
   }
 
   handleAuthService() {
+    const token: string | null = localStorage.getItem('token') ?? null;
+
+    if (!token) {
+      this.store.dispatch(
+        setAuthUser({
+          user: null,
+        }),
+      );
+      return;
+    }
+
     this.authUserService.handleAuthUser().subscribe({
       next: (res: IResponse<IAuthUser>) => {
-        this.user.set(res.data);
+        this.store.dispatch(
+          setAuthUser({
+            user: res.data,
+          }),
+        );
       },
-      error: (err: IError) => {
-        this.user.set(null);
+      error: () => {
+        this.store.dispatch(
+          setAuthUser({
+            user: null,
+          }),
+        );
       },
     });
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

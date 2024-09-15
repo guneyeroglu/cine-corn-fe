@@ -1,1 +1,1 @@
-export * from './snackbar.service';
+export {};

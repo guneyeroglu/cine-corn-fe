@@ -7,14 +7,15 @@ import {
   Validators,
   AbstractControl,
 } from '@angular/forms';
+import { Store } from '@ngrx/store';
 
 import { CineCornCardComponent } from '../../components/card/card.component';
 import { CineCornIconComponent } from '../../components/icons/icon.component';
 import { LoginService } from '../../services/mutate';
-import { SnackbarService } from '../../services/others';
 import { routeConverter } from '../../global/functions';
 import { APP_ROUTES, STATUS_TYPE } from '../../global/enums';
-import { IError, ILoginResponse, IResponse } from '../../global/interfaces';
+import { IError, ILoginResponse, IResponse, ISnackbarState } from '../../global/interfaces';
+import { setSnackbar } from '../../store/actions';
 
 @Component({
   selector: 'cine-corn-login',
@@ -29,7 +30,7 @@ export class CineCornLoginComponent {
 
   constructor(
     private loginService: LoginService,
-    private snackbarService: SnackbarService,
+    private store: Store<{ snackbar: ISnackbarState }>,
     private router: Router,
   ) {}
 
@@ -105,13 +106,25 @@ export class CineCornLoginComponent {
         })
         .subscribe({
           next: (res: IResponse<ILoginResponse>) => {
-            this.snackbarService.show(res.message, STATUS_TYPE.info);
+            this.store.dispatch(
+              setSnackbar({
+                open: true,
+                text: res.message,
+                statusType: STATUS_TYPE.info,
+              }),
+            );
             localStorage.setItem('token', res.data.token ?? '');
             this.myForm.reset();
             this.router.navigate([routeConverter(APP_ROUTES.home)]);
           },
           error: (err: IError) => {
-            this.snackbarService.show(err.error.message, STATUS_TYPE.error);
+            this.store.dispatch(
+              setSnackbar({
+                open: true,
+                text: err.error.message,
+                statusType: STATUS_TYPE.error,
+              }),
+            );
           },
         });
     }
