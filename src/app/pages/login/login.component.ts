@@ -58,7 +58,7 @@ export class CineCornLoginComponent {
     password: new FormControl('', [
       Validators.required,
       Validators.pattern(/^\S+$/),
-      Validators.minLength(3),
+      Validators.minLength(6),
       Validators.maxLength(16),
     ]),
   });
