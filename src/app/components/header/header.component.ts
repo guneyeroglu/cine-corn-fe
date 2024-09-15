@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 import { APP_ROUTES } from '../../global/enums';
@@ -9,7 +8,7 @@ import { CineCornIconComponent } from '../icons/icon.component';
 @Component({
   selector: 'cine-corn-header',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive, CineCornIconComponent],
+  imports: [RouterLink, RouterLinkActive, CineCornIconComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })

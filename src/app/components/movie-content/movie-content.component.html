@@ -7,9 +7,11 @@
   } @else {
     @if (movies && movies.length > 0) {
       <ul class="responsive-list">
-        <li *ngFor="let movie of movies">
-          <cine-corn-movie-card [movie]="movie" />
-        </li>
+        @for (movie of movies; track movie.id) {
+          <li>
+            <cine-corn-movie-card [movie]="movie" />
+          </li>
+        }
       </ul>
     } @else {
       <div>NoData</div>

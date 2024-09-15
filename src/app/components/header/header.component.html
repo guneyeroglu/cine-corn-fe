@@ -4,13 +4,11 @@
   </a>
   <nav class="header__nav">
     <ul class="header__nav--list">
-      <li
-        *ngFor="let headerMenuItem of headerMenuList"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        <a routerLink="{{ headerMenuItem.path }}">{{ headerMenuItem.name }}</a>
-      </li>
+      @for (headerMenuItem of headerMenuList; track headerMenuItem.name) {
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a routerLink="{{ headerMenuItem.path }}">{{ headerMenuItem.name }}</a>
+        </li>
+      }
     </ul>
   </nav>
   <div class="header__actions">
