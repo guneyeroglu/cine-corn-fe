@@ -75,8 +75,8 @@ export class CineCornHeaderComponent {
   }
 
   logout() {
-    localStorage.removeItem('token');
     this.onCloseMenu();
+    localStorage.removeItem('token');
     window.location.href = routeConverter(APP_ROUTES.home);
   }
 }
