@@ -65,15 +65,18 @@ export class CineCornHeaderComponent {
   }
 
   goUserPage() {
+    this.onCloseMenu();
     this.router.navigate([routeConverter(APP_ROUTES.profile)]);
   }
 
   goUserList() {
+    this.onCloseMenu();
     this.router.navigate([routeConverter(APP_ROUTES.my_list)]);
   }
 
   logout() {
     localStorage.removeItem('token');
+    this.onCloseMenu();
     window.location.href = routeConverter(APP_ROUTES.home);
   }
 }
