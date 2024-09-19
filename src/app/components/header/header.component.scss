@@ -19,11 +19,21 @@
   }
 
   .header {
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: stretch;
     height: 50px;
+
+    &__menu {
+      visibility: hidden;
+      pointer-events: none;
+      position: absolute;
+      top: 50%;
+      left: 8px;
+      transform: translate(0%, -50%);
+    }
 
     &__image {
       flex: 0;
@@ -109,18 +119,44 @@
       justify-content: flex-end;
       align-items: center;
       gap: 16px;
+
+      ngx-skeleton-loader {
+        display: flex;
+        gap: 16px;
+      }
+
+      &--user {
+        max-width: 150px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .logout {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 4px;
+        color: colors.$error-50;
+      }
     }
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 1024px) {
     .header {
-      justify-content: center;
+      &__menu {
+        visibility: visible;
+        pointer-events: all;
+      }
 
       &__image {
         margin-right: 0px;
+        margin-left: 56px;
       }
 
-      &__nav {
+      &__nav,
+      &__actions {
         display: none;
       }
     }

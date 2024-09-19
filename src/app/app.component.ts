@@ -14,7 +14,6 @@ import { setAuthUser } from './store/actions';
 @Component({
   selector: 'cine-corn-app',
   standalone: true,
-
   imports: [
     RouterOutlet,
     CineCornHeaderComponent,
@@ -35,7 +34,6 @@ import { setAuthUser } from './store/actions';
   `,
 })
 export class CineCornAppComponent {
-  @ViewChild(CineCornSnackbarComponent) snackbarComponent!: CineCornSnackbarComponent;
   private subscription: Subscription = new Subscription();
 
   constructor(
@@ -66,8 +64,10 @@ export class CineCornAppComponent {
       this.store.dispatch(
         setAuthUser({
           user: null,
+          isLoading: false,
         }),
       );
+
       return;
     }
 
@@ -76,6 +76,7 @@ export class CineCornAppComponent {
         this.store.dispatch(
           setAuthUser({
             user: res.data,
+            isLoading: false,
           }),
         );
       },
@@ -83,8 +84,11 @@ export class CineCornAppComponent {
         this.store.dispatch(
           setAuthUser({
             user: null,
+            isLoading: false,
           }),
         );
+
+        localStorage.removeItem('token');
       },
     });
   }

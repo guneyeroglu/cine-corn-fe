@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, input, Input } from '@angular/core';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @Component({
@@ -7,22 +7,22 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
   imports: [NgxSkeletonLoaderModule],
   template: `
     @if (!isIconLoaded) {
-      @if (skeleton) {
+      @if (skeleton()) {
         <ngx-skeleton-loader
           count="1"
           animation="progress"
           [theme]="{
-            width: size,
-            height: size,
+            width: size(),
+            height: size(),
             marginBottom: 0,
             borderRadius: '50%',
-            backgroundColor: color,
+            backgroundColor: color(),
           }"
         />
       }
     } @else {
-      <span class="material-symbols-outlined" [style]="{ fontSize: size, color }">{{
-        isIconLoaded ? icon : ''
+      <span class="material-symbols-outlined" [style]="{ fontSize: size(), color: color() }">{{
+        isIconLoaded ? icon() : ''
       }}</span>
     }
   `,
@@ -43,14 +43,16 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
   `,
 })
 export class CineCornIconComponent {
-  @Input() icon!: string;
-  @Input() size: string = '24px';
-  @Input() color: string = '#ebe9fe';
-  @Input() skeleton: boolean = true;
+  constructor(public elementRef: ElementRef) {}
+
+  icon = input<string>('');
+  size = input<string>('24px');
+  color = input<string>('#ebe9fe');
+  skeleton = input<boolean>(true);
   isIconLoaded: boolean = false;
 
   ngAfterViewInit() {
-    document.fonts.load(`${this.size} 'Material Symbols Outlined'`).then(() => {
+    document.fonts.load(`${this.size()} 'Material Symbols Outlined'`).then(() => {
       this.isIconLoaded = true;
     });
   }

@@ -8,8 +8,11 @@ import {
   CineCornLoginComponent,
   CineCornMovieDetailsComponent,
   CineCornMoviesComponent,
+  CineCornMyListComponent,
+  CineCornProfileComponent,
   CineCornRegisterComponent,
 } from './pages';
+import { AuthGuard } from './components/auth-guard/auth-guard.component';
 
 export const routes: Routes = [
   {
@@ -33,11 +36,21 @@ export const routes: Routes = [
     component: CineCornListDetailsComponent,
   },
   {
+    path: APP_ROUTES.my_list,
+    component: CineCornMyListComponent,
+  },
+  {
+    path: APP_ROUTES.profile,
+    component: CineCornProfileComponent,
+  },
+  {
     path: APP_ROUTES.login,
     component: CineCornLoginComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: APP_ROUTES.register,
     component: CineCornRegisterComponent,
+    canActivate: [AuthGuard],
   },
 ];

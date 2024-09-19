@@ -44,15 +44,14 @@
             [placeholder]="passwordPlaceholder"
             autocomplete="off"
           />
-          <button
+          <cine-corn-icon
             button-text-primary
-            icon
+            icon-button
             class="form__box--input-icon"
-            type="button"
+            [icon]="passwordIcon"
+            [skeleton]="false"
             (click)="handleVisibilityPassword()"
-          >
-            <cine-corn-icon [icon]="passwordIcon" [skeleton]="false" />
-          </button>
+          />
         </div>
         @if (password?.invalid && password?.touched && password?.errors) {
           <small class="error-text">{{ getErrorMessage(password) }}</small>
@@ -78,15 +77,14 @@
             [placeholder]="confirmPasswordPlaceholder"
             autocomplete="off"
           />
-          <button
+          <cine-corn-icon
             button-text-primary
-            icon
+            icon-button
             class="form__box--input-icon"
-            type="button"
+            [icon]="confirmPasswordIcon"
+            [skeleton]="false"
             (click)="handleVisibilityConfirmPassword()"
-          >
-            <cine-corn-icon [icon]="confirmPasswordIcon" [skeleton]="false" />
-          </button>
+          />
         </div>
         @if (confirmPassword?.invalid && confirmPassword?.touched && confirmPassword?.errors) {
           <small class="error-text">{{ getErrorMessage(confirmPassword) }}</small>

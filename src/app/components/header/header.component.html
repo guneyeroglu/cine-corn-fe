@@ -1,4 +1,5 @@
 <header class="header responsive-container">
+  <cine-corn-icon icon="menu" size="36px" class="header__menu" />
   <a routerLink="{{ homePath }}" class="header__image">
     <img src="../../../assets/images/img/cine-corn-icon.png" alt="CineCorn" />
   </a>
@@ -12,14 +13,47 @@
     </ul>
   </nav>
   <div class="header__actions">
-    <button button-text-primary icon>
-      <cine-corn-icon icon="search" />
-    </button>
-    @if (user()) {
-      <span>{{ user()?.username }}</span>
+    @if (isLoading()) {
+      <ngx-skeleton-loader
+        count="3"
+        animation="progress"
+        [theme]="{
+          width: '35px',
+          height: '35px',
+          marginBottom: 0,
+          borderRadius: '50%',
+          backgroundColor: 'rgba(255, 255, 255, 0.4)',
+        }"
+      />
     } @else {
-      <a button-text-primary routerLink="{{ loginPath }}">Login</a>
-      <a button-text-primary routerLink="{{ registerPath }}">Register</a>
+      <cine-corn-icon button-text-primary icon-button icon="search" (click)="(null)" />
+      @if (user()) {
+        <button class="header__actions--user" #menu button-none (click)="onOpenMenu()">
+          {{ user()?.username }}
+        </button>
+        @if (openMenu()) {
+          <cine-corn-menu [target]="menu" (close)="onCloseMenu()">
+            <cine-corn-menu-item (click)="goUserPage()">
+              <cine-corn-icon icon="person" />
+              <span>Profile</span>
+            </cine-corn-menu-item>
+            <cine-corn-menu-item (click)="goUserList()">
+              <cine-corn-icon icon="movie" [skeleton]="false" />
+              <span>My List</span></cine-corn-menu-item
+            >
+            <div class="divider"></div>
+            <cine-corn-menu-item (click)="logout()">
+              <div class="logout">
+                <cine-corn-icon icon="logout" color="currentColor" />
+                <span>Logout</span>
+              </div>
+            </cine-corn-menu-item>
+          </cine-corn-menu>
+        }
+      } @else {
+        <a button-text-primary routerLink="{{ loginPath }}">Login</a>
+        <a button-text-primary routerLink="{{ registerPath }}">Register</a>
+      }
     }
   </div>
 </header>

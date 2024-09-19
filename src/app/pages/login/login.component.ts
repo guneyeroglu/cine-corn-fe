@@ -14,7 +14,14 @@ import { CineCornIconComponent } from '../../components/icons/icon.component';
 import { LoginService } from '../../services/mutate';
 import { routeConverter } from '../../global/functions';
 import { APP_ROUTES, STATUS_TYPE } from '../../global/enums';
-import { IError, ILoginResponse, IResponse, ISnackbarState } from '../../global/interfaces';
+import {
+  IAuthUser,
+  IAuthUserState,
+  IError,
+  ILoginResponse,
+  IResponse,
+  ISnackbarState,
+} from '../../global/interfaces';
 import { setSnackbar } from '../../store/actions';
 
 @Component({

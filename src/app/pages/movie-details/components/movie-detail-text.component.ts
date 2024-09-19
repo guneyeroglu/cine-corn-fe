@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @Component({
@@ -9,7 +9,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
   styleUrl: './movie-detail-text.component.scss',
 })
 export class CineCornMovieDetailTextComponent {
-  @Input() title!: string;
-  @Input() subtitle!: string;
-  @Input() isLoading!: boolean;
+  title = input<string>('');
+  subtitle = input<string>('');
+  isLoading = input<boolean>(true);
 }

@@ -44,15 +44,14 @@
             [placeholder]="placeholder"
             autocomplete="off"
           />
-          <button
+          <cine-corn-icon
             button-text-primary
-            icon
+            icon-button
             class="form__box--input-icon"
-            type="button"
+            [icon]="icon"
+            [skeleton]="false"
             (click)="handleVisibility()"
-          >
-            <cine-corn-icon [icon]="icon" [skeleton]="false" />
-          </button>
+          />
         </div>
         @if (password?.invalid && password?.touched && password?.errors) {
           <small class="error-text">{{ getErrorMessage(password) }}</small>

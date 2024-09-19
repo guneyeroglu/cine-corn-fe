@@ -1,0 +1,23 @@
+@use '../../../../assets/styles/utils/variables' as colors;
+
+:host {
+  display: block;
+
+  li {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 4px 8px;
+    gap: 4px;
+
+    &:hover:not(&.disabled) {
+      cursor: pointer;
+      background-color: colors.$black-20;
+    }
+
+    &.disabled {
+      color: colors.$white-30;
+    }
+  }
+}

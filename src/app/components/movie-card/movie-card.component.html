@@ -1,13 +1,13 @@
 <a class="card" routerLink="{{ moviePath }}">
   <div class="card__header">
     <cine-corn-icon icon="star" color="#ffa53b" />
-    <span>{{ movie.point }}</span>
+    <span>{{ movie()?.point }}</span>
   </div>
   <div class="card__image">
     <img
       class="{{ !isImageLoaded ? 'hidden' : '' }}"
-      [src]="movie.posterImage"
-      [alt]="movie.name"
+      [src]="movie()?.posterImage"
+      [alt]="movie()?.name"
       loading="lazy"
       (load)="load()"
     />
@@ -29,6 +29,6 @@
     }
   </div>
   <div class="card__footer">
-    <span>{{ movie.name }}</span>
+    <span>{{ movie()?.name }}</span>
   </div>
 </a>

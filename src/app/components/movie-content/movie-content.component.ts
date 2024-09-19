@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, Input } from '@angular/core';
 
 import { IMovie } from '../../global/interfaces';
 import { CineCornMovieCardComponent } from '../movie-card/movie-card.component';
@@ -12,7 +12,7 @@ import { CineCornLoadingMovieCardComponent } from '../loading-movie-card/loading
   styleUrl: './movie-content.component.scss',
 })
 export class CineCornMovieContentComponent {
-  @Input() title!: string;
-  @Input() movies!: IMovie[];
-  @Input() isLoading!: boolean;
+  title = input<string>('');
+  movies = input<IMovie[]>([]);
+  isLoading = input<boolean>(true);
 }
