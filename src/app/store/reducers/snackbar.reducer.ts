@@ -6,7 +6,7 @@ import { setSnackbar, onCloseSnackbar } from '../actions';
 
 export const initialSnackbarState: ISnackbarState = {
   open: false,
-  text: 'Error',
+  text: '',
   statusType: STATUS_TYPE.info,
   duration: 3000,
 };
