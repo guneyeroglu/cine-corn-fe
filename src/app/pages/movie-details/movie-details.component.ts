@@ -24,6 +24,8 @@ export class CineCornMovieDetailsComponent {
   isLoadingMovieDetails: boolean = true;
   isBannerLoaded: boolean = false;
   isPosterLoaded: boolean = false;
+  isFavorite: boolean = false;
+  isInList: boolean = false;
   movieId!: string;
   movieDetails: IMovieDetails | undefined = undefined;
   genreNames: string = '';
@@ -31,6 +33,14 @@ export class CineCornMovieDetailsComponent {
   releaseDate: string = '';
   runTime: string = '';
   startTime: number = Date.now();
+
+  get favoriteText() {
+    return this.isFavorite ? 'Remove My Favorite' : 'Add My Favorite';
+  }
+
+  get listText() {
+    return this.isInList ? 'Remove My List' : 'Add My List';
+  }
 
   ngOnInit() {
     this.movieId = this.route.snapshot.paramMap.get('id')!;
@@ -64,5 +74,13 @@ export class CineCornMovieDetailsComponent {
 
   posterLoad() {
     manageLoadingState(() => (this.isPosterLoaded = true), this.startTime);
+  }
+
+  handleFavorite() {
+    this.isFavorite = !this.isFavorite;
+  }
+
+  handleList() {
+    this.isInList = !this.isInList;
   }
 }

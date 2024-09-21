@@ -87,6 +87,20 @@
       @include opacity-border(top, -1px, colors.$white-50);
     }
 
+    &__actions {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: stretch;
+      gap: 24px;
+      padding-bottom: calc(75px / 2);
+
+      button {
+        flex: 1;
+        max-width: 250px;
+      }
+    }
+
     &__content {
       display: flex;
       flex-direction: row;
@@ -108,7 +122,7 @@
           height: 750px;
           border-radius: 10px;
           overflow: hidden;
-          --animation-delay: 1000ms;
+          --animation-delay: 1500ms;
           @include opacity-border(bottom, -1px, colors.$white-100);
 
           img {
@@ -211,7 +225,7 @@
           &-img {
             margin: auto;
             margin-top: 75px;
-            --animation-delay: 2500ms;
+            --animation-delay: 3000ms;
           }
 
           .box {

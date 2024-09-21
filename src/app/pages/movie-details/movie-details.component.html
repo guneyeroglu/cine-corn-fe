@@ -49,6 +49,11 @@
     </div>
   </div>
   <div class="details__divider fade-in" style="--animation-delay: 750ms"></div>
+  <div class="details__actions fade-in" style="--animation-delay: 1000ms">
+    <button button-contained-primary (click)="handleFavorite()">{{ favoriteText }}</button>
+    <button button-contained-primary (click)="handleList()">{{ listText }}</button>
+  </div>
+  <div class="details__divider fade-in" style="--animation-delay: 1250ms"></div>
   <div class="details__content">
     <div class="details__content--paper">
       <div class="details__content--paper-img fade-in {{ !isPosterLoaded ? 'hidden' : '' }}">
@@ -77,29 +82,15 @@
       <div class="box">
         <cine-corn-movie-detail-text
           class="fade-in"
-          title="Description"
-          [subtitle]="movieDetails?.description ?? ''"
-          [isLoading]="isLoadingMovieDetails"
-          style="--animation-delay: 1250ms"
-        />
-        <cine-corn-movie-detail-text
-          class="fade-in"
           title="Release Date"
           [subtitle]="releaseDate"
-          [isLoading]="isLoadingMovieDetails"
-          style="--animation-delay: 1500ms"
-        />
-        <cine-corn-movie-detail-text
-          class="fade-in"
-          title="Run Time"
-          [subtitle]="runTime"
           [isLoading]="isLoadingMovieDetails"
           style="--animation-delay: 1750ms"
         />
         <cine-corn-movie-detail-text
           class="fade-in"
-          title="Stars"
-          [subtitle]="starNames"
+          title="Run Time"
+          [subtitle]="runTime"
           [isLoading]="isLoadingMovieDetails"
           style="--animation-delay: 2000ms"
         />
@@ -109,6 +100,20 @@
           [subtitle]="genreNames"
           [isLoading]="isLoadingMovieDetails"
           style="--animation-delay: 2250ms"
+        />
+        <cine-corn-movie-detail-text
+          class="fade-in"
+          title="Stars"
+          [subtitle]="starNames"
+          [isLoading]="isLoadingMovieDetails"
+          style="--animation-delay: 2500ms"
+        />
+        <cine-corn-movie-detail-text
+          class="fade-in"
+          title="Description"
+          [subtitle]="movieDetails?.description ?? ''"
+          [isLoading]="isLoadingMovieDetails"
+          style="--animation-delay: 2750ms"
         />
       </div>
     </div>
