@@ -18,6 +18,12 @@ export class CineCornMovieCardComponent {
   movie = input<IMovie | null>(null);
   isImageLoaded: boolean = false;
   moviePath: string = '';
+  isFavorite: boolean = true;
+  isInList: boolean = true;
+
+  get listIcon() {
+    return this.isInList ? 'add' : 'check';
+  }
 
   ngOnInit() {
     this.moviePath = routeConverter(
@@ -27,5 +33,17 @@ export class CineCornMovieCardComponent {
 
   load() {
     this.isImageLoaded = true;
+  }
+
+  handleFavorite(event: MouseEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.isFavorite = !this.isFavorite;
+  }
+
+  handleList(event: MouseEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.isInList = !this.isInList;
   }
 }

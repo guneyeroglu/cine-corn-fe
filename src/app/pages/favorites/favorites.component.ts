@@ -7,16 +7,16 @@ import { manageLoadingState } from '../../global/functions';
 import { IError, IMovie, IResponse } from '../../global/interfaces';
 
 @Component({
-  selector: 'cine-corn-my-list',
+  selector: 'cine-corn-favorites',
   standalone: true,
   imports: [CineCornMovieContentComponent],
-  templateUrl: './my-list.component.html',
-  styleUrl: './my-list.component.scss',
+  templateUrl: './favorites.component.html',
+  styleUrl: './favorites.component.scss',
 })
-export class CineCornMyListComponent {
+export class CineCornFavoritesComponent {
   constructor(private movieService: MovieService) {}
 
-  title: string = 'My List';
+  title: string = 'Favorites';
   movies: IMovie[] = [];
   isLoading: boolean = true;
   startTime: number = Date.now();

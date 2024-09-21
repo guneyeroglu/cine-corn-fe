@@ -2,9 +2,8 @@ import { Routes } from '@angular/router';
 
 import { APP_ROUTES } from './global/enums';
 import {
+  CineCornFavoritesComponent,
   CineCornHomeComponent,
-  CineCornListDetailsComponent,
-  CineCornListsComponent,
   CineCornLoginComponent,
   CineCornMovieDetailsComponent,
   CineCornMoviesComponent,
@@ -27,16 +26,12 @@ export const routes: Routes = [
     component: CineCornMovieDetailsComponent,
   },
   {
-    path: APP_ROUTES.lists,
-    component: CineCornListsComponent,
-  },
-  {
-    path: APP_ROUTES.list_details,
-    component: CineCornListDetailsComponent,
-  },
-  {
     path: APP_ROUTES.my_list,
     component: CineCornMyListComponent,
+  },
+  {
+    path: APP_ROUTES.favorites,
+    component: CineCornFavoritesComponent,
   },
   {
     path: APP_ROUTES.login,

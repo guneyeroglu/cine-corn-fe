@@ -21,9 +21,12 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
         />
       }
     } @else {
-      <span class="material-symbols-outlined" [style]="{ fontSize: size(), color: color() }">{{
-        isIconLoaded ? icon() : ''
-      }}</span>
+      <span
+        class="material-symbols-outlined"
+        [class.filled]="filled()"
+        [style]="{ fontSize: size(), color: color() }"
+        >{{ isIconLoaded ? icon() : '' }}</span
+      >
     }
   `,
   styles: `
@@ -48,6 +51,7 @@ export class CineCornIconComponent {
   icon = input<string>('');
   size = input<string>('24px');
   color = input<string>('#ebe9fe');
+  filled = input<boolean>(false);
   skeleton = input<boolean>(true);
   isIconLoaded: boolean = false;
 

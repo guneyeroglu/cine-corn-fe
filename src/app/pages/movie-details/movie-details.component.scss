@@ -8,10 +8,10 @@
       margin-top: 75px;
 
       &--img {
-        height: 750px;
         position: relative;
-        overflow: hidden;
+        height: 750px;
         border-radius: 10px;
+        overflow: hidden;
         background-color: colors.$black-40;
 
         &::before {
@@ -33,7 +33,7 @@
           content: '';
           position: absolute;
           inset: 0;
-          background: radial-gradient(50% 50% at 50% 50%, transparent, colors.$black-65);
+          background: radial-gradient(50% 50% at 50% 50%, transparent, colors.$black-30);
         }
 
         img {
@@ -107,28 +107,25 @@
           width: 500px;
           height: 750px;
           border-radius: 10px;
+          overflow: hidden;
           --animation-delay: 1000ms;
           @include opacity-border(bottom, -1px, colors.$white-100);
 
           img {
             width: 100%;
             height: 100%;
-            border-radius: 10px;
+            filter: brightness(0.85);
           }
 
           &::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(50% 50% at 50% 50%, transparent, colors.$black-50);
-            border-radius: 10px;
+            background: radial-gradient(50% 50% at 50% 50%, transparent, colors.$black-30);
           }
 
           &.hidden {
-            &::after {
-              visibility: hidden;
-            }
-
+            &::after,
             img {
               visibility: hidden;
             }

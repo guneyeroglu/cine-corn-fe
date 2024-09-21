@@ -3,14 +3,8 @@
     <cine-corn-icon icon="star" color="#ffa53b" />
     <span>{{ movie()?.point }}</span>
   </div>
-  <div class="card__image">
-    <img
-      class="{{ !isImageLoaded ? 'hidden' : '' }}"
-      [src]="movie()?.posterImage"
-      [alt]="movie()?.name"
-      loading="lazy"
-      (load)="load()"
-    />
+  <div class="card__image" [class.hidden]="!isImageLoaded">
+    <img [src]="movie()?.posterImage" [alt]="movie()?.name" loading="lazy" (load)="load()" />
     @if (!isImageLoaded) {
       <ngx-skeleton-loader
         count="1"
@@ -30,5 +24,23 @@
   </div>
   <div class="card__footer">
     <span>{{ movie()?.name }}</span>
+  </div>
+  <div class="card__action">
+    <cine-corn-icon
+      button-contained-primary
+      icon-button
+      icon="favorite"
+      size="16px"
+      [filled]="isFavorite"
+      (click)="handleFavorite($event)"
+    />
+    <cine-corn-icon
+      button-contained-primary
+      icon-button
+      size="16px"
+      [icon]="listIcon"
+      [filled]="false"
+      (click)="handleList($event)"
+    />
   </div>
 </a>

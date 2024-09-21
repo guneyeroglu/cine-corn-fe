@@ -47,10 +47,6 @@ export class CineCornHeaderComponent {
       name: 'Movies',
       path: APP_ROUTES.movies,
     },
-    {
-      name: 'Lists',
-      path: APP_ROUTES.lists,
-    },
   ];
   isLoading = signal<boolean>(false);
   user = signal<IAuthUser | null>(null);
@@ -64,9 +60,14 @@ export class CineCornHeaderComponent {
     this.openMenu.set(false);
   }
 
-  goUserList() {
+  goMyList() {
     this.onCloseMenu();
     this.router.navigate([routeConverter(APP_ROUTES.my_list)]);
+  }
+
+  goFavorites() {
+    this.onCloseMenu();
+    this.router.navigate([routeConverter(APP_ROUTES.favorites)]);
   }
 
   logout() {

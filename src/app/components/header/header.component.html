@@ -33,10 +33,14 @@
         </button>
         @if (openMenu()) {
           <cine-corn-menu [target]="menu" (close)="onCloseMenu()">
-            <cine-corn-menu-item (click)="goUserList()">
+            <cine-corn-menu-item (click)="goMyList()">
               <cine-corn-icon icon="movie" [skeleton]="false" />
-              <span>My List</span></cine-corn-menu-item
-            >
+              <span>My List</span>
+            </cine-corn-menu-item>
+            <cine-corn-menu-item (click)="goFavorites()">
+              <cine-corn-icon icon="favorite" [skeleton]="false" />
+              <span>Favorites</span>
+            </cine-corn-menu-item>
             <div class="divider"></div>
             <cine-corn-menu-item (click)="logout()">
               <div class="logout">
