@@ -1,0 +1,14 @@
+<div class="content">
+  <h3 class="content__title">
+    {{ title() }}
+  </h3>
+  @if (isLoading()) {
+    <cine-corn-loading-list-card />
+  } @else {
+    @if (true) {
+      <cine-corn-list-card />
+    } @else {
+      <div>No Data</div>
+    }
+  }
+</div>

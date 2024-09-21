@@ -1,0 +1,29 @@
+@use '../../../assets/styles/utils/variables' as colors;
+@import '../../../assets/styles/utils/functions';
+
+:host {
+  display: inline-flex;
+  width: 100%;
+
+  .content {
+    width: 100%;
+
+    &__title {
+      display: block;
+      font-size: 2rem;
+      font-weight: 500;
+      color: colors.$neutral-200;
+      margin-bottom: 16px;
+      position: relative;
+      @include opacity-border(bottom, 0px, colors.$white-50);
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .content {
+      &__title {
+        text-align: center;
+      }
+    }
+  }
+}

@@ -30,9 +30,9 @@ export class CineCornMovieDetailsComponent {
   starNames: string = '';
   releaseDate: string = '';
   runTime: string = '';
+  startTime: number = Date.now();
 
   ngOnInit() {
-    const startTime: number = Date.now();
     this.movieId = this.route.snapshot.paramMap.get('id')!;
     this.getMovieDetails(this.movieId).subscribe((res: IMovieDetails) => {
       this.genreNames = joinArrayToString(res.genres);
@@ -40,7 +40,7 @@ export class CineCornMovieDetailsComponent {
       this.releaseDate = formatDateString(res.releaseDate);
       this.runTime = res.runTime ? `${res.runTime} min` : '-';
       this.movieDetails = res;
-      manageLoadingState(() => (this.isLoadingMovieDetails = false), startTime);
+      manageLoadingState(() => (this.isLoadingMovieDetails = false), this.startTime);
     });
   }
 
@@ -59,10 +59,10 @@ export class CineCornMovieDetailsComponent {
   }
 
   bannerLoad() {
-    this.isBannerLoaded = true;
+    manageLoadingState(() => (this.isBannerLoaded = true), this.startTime);
   }
 
   posterLoad() {
-    this.isPosterLoaded = true;
+    manageLoadingState(() => (this.isPosterLoaded = true), this.startTime);
   }
 }

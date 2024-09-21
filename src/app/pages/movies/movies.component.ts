@@ -19,12 +19,12 @@ export class CineCornMoviesComponent {
   title: string = 'All Movies';
   movies: IMovie[] = [];
   isLoading: boolean = true;
+  startTime: number = Date.now();
 
   ngOnInit() {
-    const startTime: number = Date.now();
     this.getAllMovies().subscribe((res: IMovie[]) => {
       this.movies = res;
-      manageLoadingState(() => (this.isLoading = false), startTime);
+      manageLoadingState(() => (this.isLoading = false), this.startTime);
     });
   }
 
