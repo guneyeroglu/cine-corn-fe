@@ -33,10 +33,6 @@
         </button>
         @if (openMenu()) {
           <cine-corn-menu [target]="menu" (close)="onCloseMenu()">
-            <cine-corn-menu-item (click)="goUserPage()">
-              <cine-corn-icon icon="person" />
-              <span>Profile</span>
-            </cine-corn-menu-item>
             <cine-corn-menu-item (click)="goUserList()">
               <cine-corn-icon icon="movie" [skeleton]="false" />
               <span>My List</span></cine-corn-menu-item

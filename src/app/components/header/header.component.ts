@@ -64,11 +64,6 @@ export class CineCornHeaderComponent {
     this.openMenu.set(false);
   }
 
-  goUserPage() {
-    this.onCloseMenu();
-    this.router.navigate([routeConverter(APP_ROUTES.profile)]);
-  }
-
   goUserList() {
     this.onCloseMenu();
     this.router.navigate([routeConverter(APP_ROUTES.my_list)]);

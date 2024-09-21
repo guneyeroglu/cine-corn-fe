@@ -11,7 +11,9 @@ import { Store } from '@ngrx/store';
 import { CineCornCardComponent } from '../../components/card/card.component';
 import { CineCornIconComponent } from '../../components/icons/icon.component';
 import { RegisterService } from '../../services/mutate';
-import { IError, ISnackbarState } from '../../global/interfaces';
+import { IError, IResponse, ISnackbarState } from '../../global/interfaces';
+import { STATUS_TYPE } from '../../global/enums';
+import { setSnackbar } from '../../store/actions';
 
 @Component({
   selector: 'cine-corn-register',
@@ -155,14 +157,26 @@ export class CineCornRegisterComponent {
           password: this.myForm.value.password!,
         })
         .subscribe({
-          next: res => {
-            // this.snackbarService.show(res.message, STATUS_TYPE.success);
+          next: (res: IResponse) => {
+            this.store.dispatch(
+              setSnackbar({
+                open: true,
+                text: res.message,
+                statusType: STATUS_TYPE.success,
+              }),
+            );
             this.myForm.reset();
             this.visibilityPassword = false;
             this.visibilityConfirmPassword = false;
           },
           error: (err: IError) => {
-            // this.snackbarService.show(err.error.message, STATUS_TYPE.error);
+            this.store.dispatch(
+              setSnackbar({
+                open: true,
+                text: err.error.message,
+                statusType: STATUS_TYPE.error,
+              }),
+            );
           },
         });
     }

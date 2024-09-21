@@ -14,14 +14,7 @@ import { CineCornIconComponent } from '../../components/icons/icon.component';
 import { LoginService } from '../../services/mutate';
 import { routeConverter } from '../../global/functions';
 import { APP_ROUTES, STATUS_TYPE } from '../../global/enums';
-import {
-  IAuthUser,
-  IAuthUserState,
-  IError,
-  ILoginResponse,
-  IResponse,
-  ISnackbarState,
-} from '../../global/interfaces';
+import { IError, ILoginResponse, IResponse, ISnackbarState } from '../../global/interfaces';
 import { setSnackbar } from '../../store/actions';
 
 @Component({
@@ -117,7 +110,7 @@ export class CineCornLoginComponent {
               setSnackbar({
                 open: true,
                 text: res.message,
-                statusType: STATUS_TYPE.info,
+                statusType: STATUS_TYPE.success,
               }),
             );
             localStorage.setItem('token', res.data.token ?? '');

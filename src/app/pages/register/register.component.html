@@ -7,7 +7,7 @@
           class="fade-in"
           [class.error-text]="username?.invalid && username?.touched"
           style="--animation-delay: 300ms"
-          >Username</label
+          >Username<span class="error-text"> *</span></label
         >
         <input
           input-outlined-default
@@ -30,7 +30,7 @@
           class="fade-in"
           [class.error-text]="password?.invalid && password?.touched"
           style="--animation-delay: 600ms"
-          >Password</label
+          >Password<span class="error-text"> *</span></label
         >
         <div class="form__box--input fade-in" style="--animation-delay: 750ms">
           <input
@@ -63,7 +63,7 @@
           class="fade-in"
           [class.error-text]="confirmPassword?.invalid && confirmPassword?.touched"
           style="--animation-delay: 900ms"
-          >Confirm Password</label
+          >Confirm Password<span class="error-text"> *</span></label
         >
         <div class="form__box--input fade-in" style="--animation-delay: 1050ms">
           <input
