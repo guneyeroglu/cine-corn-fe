@@ -67,7 +67,7 @@
   }
 
   @media screen and (max-width: 1024px) {
-    gap: 12px;
+    column-gap: 12px;
 
     li {
       @include calculate-width(4, 12px);
@@ -89,7 +89,7 @@
   }
 
   @media screen and (max-width: 600px) {
-    gap: 8px;
+    column-gap: 8px;
 
     li {
       @include calculate-width(2, 8px);
@@ -101,12 +101,12 @@
   }
 
   @media screen and (max-width: 425px) {
-    gap: 32px;
+    gap: 16px;
     justify-content: center;
 
     li {
       max-width: 225px;
-      @include calculate-width(1, 32px);
+      @include calculate-width(1, 16px);
 
       &.loading:nth-child(n + 2) {
         display: none;
