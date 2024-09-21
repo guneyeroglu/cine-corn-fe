@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, viewChild, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   ReactiveFormsModule,
@@ -25,8 +25,8 @@ import { setSnackbar } from '../../store/actions';
   styleUrl: './login.component.scss',
 })
 export class CineCornLoginComponent {
-  @ViewChild('usernameInput') usernameInput!: ElementRef;
-  @ViewChild('passwordInput') passwordInput!: ElementRef;
+  usernameInput = viewChild.required<ElementRef<HTMLInputElement>>('usernameInput');
+  passwordInput = viewChild.required<ElementRef<HTMLInputElement>>('passwordInput');
 
   constructor(
     private loginService: LoginService,
@@ -93,9 +93,9 @@ export class CineCornLoginComponent {
   onSubmit() {
     if (this.myForm.invalid) {
       if (this.username?.invalid) {
-        this.usernameInput.nativeElement.focus();
+        this.usernameInput().nativeElement.focus();
       } else if (this.password?.invalid) {
-        this.passwordInput.nativeElement.focus();
+        this.passwordInput().nativeElement.focus();
       }
       this.myForm.markAllAsTouched();
     } else {

@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, viewChild, ViewChild } from '@angular/core';
 import {
   ReactiveFormsModule,
   FormGroup,
@@ -23,9 +23,9 @@ import { setSnackbar } from '../../store/actions';
   styleUrl: './register.component.scss',
 })
 export class CineCornRegisterComponent {
-  @ViewChild('usernameInput') usernameInput!: ElementRef;
-  @ViewChild('passwordInput') passwordInput!: ElementRef;
-  @ViewChild('confirmPasswordInput') confirmPasswordInput!: ElementRef;
+  usernameInput = viewChild.required<ElementRef<HTMLInputElement>>('usernameInput');
+  passwordInput = viewChild.required<ElementRef<HTMLInputElement>>('usernameInput');
+  confirmPasswordInput = viewChild.required<ElementRef<HTMLInputElement>>('usernameInput');
 
   constructor(
     private registerService: RegisterService,
@@ -143,11 +143,11 @@ export class CineCornRegisterComponent {
   onSubmit() {
     if (this.myForm.invalid) {
       if (this.username?.invalid) {
-        this.usernameInput.nativeElement.focus();
+        this.usernameInput().nativeElement.focus();
       } else if (this.password?.invalid) {
-        this.passwordInput.nativeElement.focus();
+        this.passwordInput().nativeElement.focus();
       } else if (this.confirmPassword?.invalid) {
-        this.confirmPasswordInput.nativeElement.focus();
+        this.confirmPasswordInput().nativeElement.focus();
       }
       this.myForm.markAllAsTouched();
     } else {
