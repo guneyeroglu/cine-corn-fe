@@ -87,7 +87,6 @@ export class CineCornHeaderComponent {
 
   logout() {
     this.onCloseMenu();
-    this.onCloseDrawer();
     localStorage.removeItem('token');
     window.location.href = routeConverter(APP_ROUTES.home);
   }
