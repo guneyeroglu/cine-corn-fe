@@ -1,5 +1,5 @@
 <header class="header responsive-container">
-  <cine-corn-icon icon="menu" size="36px" class="header__menu" />
+  <cine-corn-icon icon="menu" size="36px" class="header__menu" (click)="onOpenDrawer()" />
   <a routerLink="{{ homePath }}" class="header__image">
     <img src="../../../assets/images/img/cine-corn-icon.png" alt="CineCorn" />
   </a>
@@ -34,7 +34,7 @@
         @if (openMenu()) {
           <cine-corn-menu [target]="menu" (close)="onCloseMenu()">
             <cine-corn-menu-item (click)="goMyList()">
-              <cine-corn-icon icon="movie" [skeleton]="false" />
+              <cine-corn-icon icon="list_alt" [skeleton]="false" />
               <span>My List</span>
             </cine-corn-menu-item>
             <cine-corn-menu-item (click)="goFavorites()">
@@ -51,9 +51,62 @@
           </cine-corn-menu>
         }
       } @else {
-        <a button-text-primary routerLink="{{ loginPath }}">Login</a>
         <a button-text-primary routerLink="{{ registerPath }}">Register</a>
+        <a button-contained-primary routerLink="{{ loginPath }}">Login</a>
       }
     }
   </div>
 </header>
+<cine-corn-drawer class="drawer" [open]="openDrawer()" (close)="onCloseDrawer()">
+  <div class="drawer__close">
+    <cine-corn-icon icon="close" size="36px" (click)="onCloseDrawer()" />
+  </div>
+  <div class="drawer__actions">
+    @if (user()) {
+      {{ user()?.username }}
+    } @else {
+      <a routerLink="{{ loginPath }}"><cine-corn-icon icon="login" />Login</a>
+      <a routerLink="{{ registerPath }}"><cine-corn-icon icon="person_add" />Register</a>
+    }
+  </div>
+  <div class="divider"></div>
+  <nav class="drawer__nav">
+    <ul>
+      @for (headerMenuItem of headerMenuList; track headerMenuItem.name) {
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a routerLink="{{ headerMenuItem.path }}">
+            <cine-corn-icon
+              [icon]="headerMenuItem.icon"
+              [filled]="isActive(headerMenuItem.path.toString())"
+            />
+            {{ headerMenuItem.name }}
+          </a>
+        </li>
+      }
+      @if (user()) {
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a routerLink="/my-list">
+            <cine-corn-icon icon="list_alt" [filled]="isActive('/my-list')" />
+            My List
+          </a>
+        </li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a routerLink="/favorites">
+            <cine-corn-icon icon="favorite" [filled]="isActive('/favorites')" />
+            Favorites
+          </a>
+        </li>
+      }
+    </ul>
+  </nav>
+  <div class="divider"></div>
+  @if (user()) {
+    <div class="drawer__logout">
+      <div class="divider"></div>
+      <button button-contained-error (click)="logout()">
+        <cine-corn-icon icon="logout" color="currentColor" />
+        Logout
+      </button>
+    </div>
+  }
+</cine-corn-drawer>

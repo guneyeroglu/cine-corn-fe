@@ -2,11 +2,11 @@
 @import '../../../assets/styles/utils/functions';
 
 :host {
-  display: inline-flex;
+  display: contents;
 
   .card {
     position: relative;
-    min-width: 500px;
+    max-width: 500px;
     width: 100%;
     border: 1px solid colors.$neutral-500;
     background-color: colors.$black-10;
