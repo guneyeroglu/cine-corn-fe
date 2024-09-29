@@ -19,8 +19,10 @@ $colors: primary, secondary, success, error, info, warning;
   cursor: text;
   transition: all 0.35s ease;
 
-  &:hover {
-    border-color: map-get(colors.$colors, #{$type}-500);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      border-color: map-get(colors.$colors, #{$type}-500);
+    }
   }
 
   &:focus,
@@ -34,8 +36,10 @@ $colors: primary, secondary, success, error, info, warning;
   &[error='true'] {
     border-color: colors.$error-600;
 
-    &:hover {
-      border-color: colors.$error-500;
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        border-color: colors.$error-500;
+      }
     }
 
     &:focus,
@@ -63,8 +67,10 @@ $colors: primary, secondary, success, error, info, warning;
   cursor: text;
   transition: all 0.35s ease;
 
-  &:hover {
-    background-color: map-get(colors.$colors, #{$type}-500);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background-color: map-get(colors.$colors, #{$type}-500);
+    }
   }
 
   &:focus,
@@ -79,9 +85,11 @@ $colors: primary, secondary, success, error, info, warning;
     background-color: colors.$error-600;
     border-color: colors.$error-600;
 
-    &:hover {
-      background-color: colors.$error-500;
-      border-color: colors.$error-500;
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background-color: colors.$error-500;
+        border-color: colors.$error-500;
+      }
     }
 
     &:focus,
@@ -110,8 +118,10 @@ $colors: primary, secondary, success, error, info, warning;
   cursor: text;
   transition: all 0.35s ease;
 
-  &:hover {
-    border-color: colors.$neutral-300;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      border-color: colors.$neutral-300;
+    }
   }
 
   &:focus,
@@ -125,8 +135,10 @@ $colors: primary, secondary, success, error, info, warning;
   &[error='true'] {
     border-color: colors.$error-600;
 
-    &:hover {
-      border-color: colors.$error-500;
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        border-color: colors.$error-500;
+      }
     }
 
     &:focus,
@@ -154,8 +166,10 @@ $colors: primary, secondary, success, error, info, warning;
   cursor: text;
   transition: all 0.35s ease;
 
-  &:hover {
-    background-color: colors.$neutral-300;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background-color: colors.$neutral-300;
+    }
   }
 
   &:focus,
@@ -170,9 +184,11 @@ $colors: primary, secondary, success, error, info, warning;
     background-color: colors.$error-600;
     border-color: colors.$error-600;
 
-    &:hover {
-      background-color: colors.$error-500;
-      border-color: colors.$error-500;
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background-color: colors.$error-500;
+        border-color: colors.$error-500;
+      }
     }
 
     &:focus,

@@ -10,7 +10,7 @@ import {
   CineCornMyListComponent,
   CineCornRegisterComponent,
 } from './pages';
-import { AuthGuard } from './components/auth-guard/auth-guard.component';
+import { LoginGuard, GuestGuard } from './components/guards';
 
 export const routes: Routes = [
   {
@@ -28,19 +28,21 @@ export const routes: Routes = [
   {
     path: APP_ROUTES.my_list,
     component: CineCornMyListComponent,
+    canActivate: [GuestGuard],
   },
   {
     path: APP_ROUTES.favorites,
     component: CineCornFavoritesComponent,
+    canActivate: [GuestGuard],
   },
   {
     path: APP_ROUTES.login,
     component: CineCornLoginComponent,
-    canActivate: [AuthGuard],
+    canActivate: [LoginGuard],
   },
   {
     path: APP_ROUTES.register,
     component: CineCornRegisterComponent,
-    canActivate: [AuthGuard],
+    canActivate: [LoginGuard],
   },
 ];

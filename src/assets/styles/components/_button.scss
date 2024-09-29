@@ -19,8 +19,10 @@ $colors: primary, secondary, success, error, info, warning;
   cursor: pointer;
   transition: all 0.35s ease;
 
-  &:hover {
-    background-color: map-get(colors.$colors, #{$type}-600);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background-color: map-get(colors.$colors, #{$type}-600);
+    }
   }
 
   &[icon-button] {
@@ -40,8 +42,10 @@ $colors: primary, secondary, success, error, info, warning;
   cursor: pointer;
   transition: all 0.35s ease;
 
-  &:hover {
-    border-color: map-get(colors.$colors, #{$type}-500);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      border-color: map-get(colors.$colors, #{$type}-500);
+    }
   }
 
   &[icon-button] {
@@ -61,8 +65,10 @@ $colors: primary, secondary, success, error, info, warning;
   cursor: pointer;
   transition: all 0.35s ease;
 
-  &:hover {
-    background-color: map-get(colors.$colors, #{$type}-500);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background-color: map-get(colors.$colors, #{$type}-500);
+    }
   }
 
   &[icon-button] {

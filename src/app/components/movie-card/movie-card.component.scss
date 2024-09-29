@@ -118,7 +118,7 @@
       z-index: 4;
     }
 
-    @media screen and (width > 1024px) {
+    @media (hover: hover) and (pointer: fine) {
       &:hover {
         &:not(.not-loaded) {
           background-color: colors.$black-50;

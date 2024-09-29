@@ -1,5 +1,12 @@
 <header class="header responsive-container">
-  <cine-corn-icon icon="menu" size="36px" class="header__menu" (click)="onOpenDrawer()" />
+  <cine-corn-icon
+    button-text-primary
+    icon-button
+    icon="menu"
+    size="36px"
+    class="header__menu"
+    (click)="onOpenDrawer()"
+  />
   <a routerLink="{{ homePath }}" class="header__image">
     <img src="../../../assets/images/img/cine-corn-icon.png" alt="CineCorn" />
   </a>
@@ -34,11 +41,11 @@
         @if (openMenu()) {
           <cine-corn-menu [target]="menu" (close)="onCloseMenu()">
             <cine-corn-menu-item (click)="goMyList()">
-              <cine-corn-icon icon="list_alt" [skeleton]="false" />
+              <cine-corn-icon icon="list_alt" />
               <span>My List</span>
             </cine-corn-menu-item>
             <cine-corn-menu-item (click)="goFavorites()">
-              <cine-corn-icon icon="favorite" [skeleton]="false" />
+              <cine-corn-icon icon="favorite" />
               <span>Favorites</span>
             </cine-corn-menu-item>
             <div class="divider"></div>

@@ -11,9 +11,11 @@
     padding: 4px 8px;
     gap: 4px;
 
-    &:hover:not(&.disabled) {
-      cursor: pointer;
-      background-color: colors.$black-20;
+    @media (hover: hover) and (pointer: fine) {
+      &:hover:not(&.disabled) {
+        cursor: pointer;
+        background-color: colors.$black-20;
+      }
     }
 
     &.disabled {
