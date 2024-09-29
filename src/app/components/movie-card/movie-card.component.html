@@ -31,7 +31,7 @@
       icon-button
       icon="favorite"
       size="16px"
-      [filled]="isFavorite"
+      [filled]="movie()?.isFavorite ?? false"
       (click)="handleFavorite($event)"
     />
     <cine-corn-icon
@@ -39,7 +39,7 @@
       icon-button
       size="16px"
       [icon]="listIcon"
-      [filled]="false"
+      [filled]="movie()?.isAddedToList ?? false"
       (click)="handleList($event)"
     />
   </div>

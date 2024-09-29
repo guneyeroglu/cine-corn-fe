@@ -24,8 +24,6 @@ export class CineCornMovieDetailsComponent {
   isLoadingMovieDetails: boolean = true;
   isBannerLoaded: boolean = false;
   isPosterLoaded: boolean = false;
-  isFavorite: boolean = false;
-  isInList: boolean = false;
   movieId!: string;
   movieDetails: IMovieDetails | undefined = undefined;
   genreNames: string = '';
@@ -35,11 +33,11 @@ export class CineCornMovieDetailsComponent {
   startTime: number = Date.now();
 
   get favoriteText() {
-    return this.isFavorite ? 'Remove My Favorite' : 'Add My Favorite';
+    return this.movieDetails?.isFavorite ? 'Remove My Favorite' : 'Add My Favorite';
   }
 
   get listText() {
-    return this.isInList ? 'Remove My List' : 'Add My List';
+    return this.movieDetails?.isAddedToList ? 'Remove My List' : 'Add My List';
   }
 
   ngOnInit() {
@@ -77,10 +75,10 @@ export class CineCornMovieDetailsComponent {
   }
 
   handleFavorite() {
-    this.isFavorite = !this.isFavorite;
+    // this.isFavorite = !this.isFavorite;
   }
 
   handleList() {
-    this.isInList = !this.isInList;
+    // this.isAddedToList = !this.isAddedToList;
   }
 }

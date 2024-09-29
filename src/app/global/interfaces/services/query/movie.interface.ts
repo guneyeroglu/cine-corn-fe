@@ -3,4 +3,6 @@ export interface IMovie {
   name: string;
   point: string;
   posterImage: string;
+  isFavorite: boolean;
+  isAddedToList: boolean;
 }

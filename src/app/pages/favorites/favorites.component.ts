@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { CineCornMovieContentComponent } from '../../components/movie-content/movie-content.component';
-import { MovieService } from '../../services/query';
+import { FavoriteService, MovieService } from '../../services/query';
 import { manageLoadingState } from '../../global/functions';
 import { IError, IMovie, IResponse } from '../../global/interfaces';
 
@@ -14,7 +14,7 @@ import { IError, IMovie, IResponse } from '../../global/interfaces';
   styleUrl: './favorites.component.scss',
 })
 export class CineCornFavoritesComponent {
-  constructor(private movieService: MovieService) {}
+  constructor(private favoriteService: FavoriteService) {}
 
   title: string = 'Favorites';
   movies: IMovie[] = [];
@@ -22,15 +22,15 @@ export class CineCornFavoritesComponent {
   startTime: number = Date.now();
 
   ngOnInit() {
-    this.getAllMovies().subscribe((res: IMovie[]) => {
+    this.getFavoriteMovies().subscribe((res: IMovie[]) => {
       this.movies = res;
       manageLoadingState(() => (this.isLoading = false), this.startTime);
     });
   }
 
-  getAllMovies(): Observable<IMovie[]> {
+  getFavoriteMovies(): Observable<IMovie[]> {
     return new Observable<IMovie[]>(observer => {
-      this.movieService.getAllMovies().subscribe({
+      this.favoriteService.getFavoriteMovies().subscribe({
         next: (res: IResponse<IMovie[]>) => {
           observer.next(res.data);
           observer.complete();
