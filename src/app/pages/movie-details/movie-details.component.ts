@@ -1,12 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 import { CineCornMovieDetailTextComponent } from './components/movie-detail-text.component';
-import { MovieDetailsService } from '../../services/mutate';
+import {
+  MovieDetailsService,
+  ToggleFavoriteService,
+  ToggleListService,
+} from '../../services/mutate';
 import { formatDateString, joinArrayToString, manageLoadingState } from '../../global/functions';
-import { IError, IMovieDetails, IResponse } from '../../global/interfaces';
+import { IError, IMovieDetails, IResponse, ISnackbarState } from '../../global/interfaces';
+import { STATUS_TYPE } from '../../global/enums';
+import { setSnackbar } from '../../store/actions';
 
 @Component({
   selector: 'cine-corn-movie-details',
@@ -18,6 +25,9 @@ import { IError, IMovieDetails, IResponse } from '../../global/interfaces';
 export class CineCornMovieDetailsComponent {
   constructor(
     private movieDetailsService: MovieDetailsService,
+    private toggleFavoriteService: ToggleFavoriteService,
+    private toggleListService: ToggleListService,
+    private store: Store<{ snackbar: ISnackbarState }>,
     private route: ActivatedRoute,
   ) {}
 
@@ -31,24 +41,33 @@ export class CineCornMovieDetailsComponent {
   releaseDate: string = '';
   runTime: string = '';
   startTime: number = Date.now();
+  isFavorite = signal<boolean>(false);
+  isAddedToList = signal<boolean>(false);
 
   get favoriteText() {
-    return this.movieDetails?.isFavorite ? 'Remove My Favorite' : 'Add My Favorite';
+    return this.isFavorite() ? 'Remove My Favorite' : 'Add My Favorite';
   }
 
   get listText() {
-    return this.movieDetails?.isAddedToList ? 'Remove My List' : 'Add My List';
+    return this.isAddedToList() ? 'Remove My List' : 'Add My List';
   }
 
   ngOnInit() {
     this.movieId = this.route.snapshot.paramMap.get('id')!;
-    this.getMovieDetails(this.movieId).subscribe((res: IMovieDetails) => {
-      this.genreNames = joinArrayToString(res.genres);
-      this.starNames = joinArrayToString(res.stars);
-      this.releaseDate = formatDateString(res.releaseDate);
-      this.runTime = res.runTime ? `${res.runTime} min` : '-';
-      this.movieDetails = res;
-      manageLoadingState(() => (this.isLoadingMovieDetails = false), this.startTime);
+    this.getMovieDetails(this.movieId).subscribe({
+      next: (res: IMovieDetails) => {
+        this.genreNames = joinArrayToString(res.genres);
+        this.starNames = joinArrayToString(res.stars);
+        this.releaseDate = formatDateString(res.releaseDate);
+        this.runTime = res.runTime ? `${res.runTime} min` : '-';
+        this.isFavorite.set(res.isFavorite);
+        this.isAddedToList.set(res.isAddedToList);
+        this.movieDetails = res;
+        manageLoadingState(() => (this.isLoadingMovieDetails = false), this.startTime);
+      },
+      error: () => {
+        manageLoadingState(() => (this.isLoadingMovieDetails = false), this.startTime);
+      },
     });
   }
 
@@ -75,10 +94,58 @@ export class CineCornMovieDetailsComponent {
   }
 
   handleFavorite() {
-    // this.isFavorite = !this.isFavorite;
+    this.toggleFavoriteService.toggleFavorite(this.movieId).subscribe({
+      next: (res: IResponse) => {
+        if (res.status === 201) {
+          this.isFavorite.set(true);
+        } else {
+          this.isFavorite.set(false);
+        }
+        this.store.dispatch(
+          setSnackbar({
+            open: true,
+            text: res.message,
+            statusType: STATUS_TYPE.success,
+          }),
+        );
+      },
+      error: (err: IError) => {
+        this.store.dispatch(
+          setSnackbar({
+            open: true,
+            text: err.error.message,
+            statusType: STATUS_TYPE.error,
+          }),
+        );
+      },
+    });
   }
 
   handleList() {
-    // this.isAddedToList = !this.isAddedToList;
+    this.toggleListService.toggleList(this.movieId).subscribe({
+      next: (res: IResponse) => {
+        if (res.status === 201) {
+          this.isAddedToList.set(true);
+        } else {
+          this.isAddedToList.set(false);
+        }
+        this.store.dispatch(
+          setSnackbar({
+            open: true,
+            text: res.message,
+            statusType: STATUS_TYPE.success,
+          }),
+        );
+      },
+      error: (err: IError) => {
+        this.store.dispatch(
+          setSnackbar({
+            open: true,
+            text: err.error.message,
+            statusType: STATUS_TYPE.error,
+          }),
+        );
+      },
+    });
   }
 }

@@ -16,7 +16,6 @@ export class MovieService {
   getAllMovies(type?: keyof typeof MOVIE_TYPE): Observable<IResponse<IMovie[]>> {
     const token: string = localStorage.getItem('token') ?? '';
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
     const params: any = {};
 
     switch (type) {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../environment';
@@ -13,6 +13,13 @@ export class MovieDetailsService {
   constructor(private http: HttpClient) {}
 
   getMovieDetails(id: string): Observable<IResponse<IMovieDetails>> {
-    return this.http.post<IResponse<IMovieDetails>>(`${this.apiUrl}/movie-details`, { id });
+    const token: string = localStorage.getItem('token') ?? '';
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.post<IResponse<IMovieDetails>>(
+      `${this.apiUrl}/movie-details`,
+      { id },
+      { headers },
+    );
   }
 }

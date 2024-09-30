@@ -29,14 +29,24 @@ export class CineCornHomeComponent {
   startTime: number = Date.now();
 
   ngOnInit() {
-    this.getMovies(MOVIE_TYPE.isFeatured).subscribe((res: IMovie[]) => {
-      this.featuredMovie = res;
-      manageLoadingState(() => (this.isLoadingForFeaturedMovie = false), this.startTime);
+    this.getMovies(MOVIE_TYPE.isFeatured).subscribe({
+      next: (res: IMovie[]) => {
+        this.featuredMovie = res;
+        manageLoadingState(() => (this.isLoadingForFeaturedMovie = false), this.startTime);
+      },
+      error: () => {
+        manageLoadingState(() => (this.isLoadingForFeaturedMovie = false), this.startTime);
+      },
     });
 
-    this.getMovies(MOVIE_TYPE.isNew).subscribe((res: IMovie[]) => {
-      this.newMovies = res;
-      manageLoadingState(() => (this.isLoadingForNewMovies = false), this.startTime);
+    this.getMovies(MOVIE_TYPE.isNew).subscribe({
+      next: (res: IMovie[]) => {
+        this.newMovies = res;
+        manageLoadingState(() => (this.isLoadingForNewMovies = false), this.startTime);
+      },
+      error: () => {
+        manageLoadingState(() => (this.isLoadingForNewMovies = false), this.startTime);
+      },
     });
   }
 

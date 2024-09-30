@@ -57,7 +57,7 @@ small.error-text {
   100% {
     opacity: 1;
     transform: translateY(0);
-    pointer-events: unset;
+    pointer-events: auto;
   }
 }
 

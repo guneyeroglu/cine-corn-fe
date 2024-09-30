@@ -22,9 +22,14 @@ export class CineCornFavoritesComponent {
   startTime: number = Date.now();
 
   ngOnInit() {
-    this.getFavoriteMovies().subscribe((res: IMovie[]) => {
-      this.movies = res;
-      manageLoadingState(() => (this.isLoading = false), this.startTime);
+    this.getFavoriteMovies().subscribe({
+      next: (res: IMovie[]) => {
+        this.movies = res;
+        manageLoadingState(() => (this.isLoading = false), this.startTime);
+      },
+      error: () => {
+        manageLoadingState(() => (this.isLoading = false), this.startTime);
+      },
     });
   }
 

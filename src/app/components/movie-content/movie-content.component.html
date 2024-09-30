@@ -14,7 +14,10 @@
         }
       </ul>
     } @else {
-      <div>NoData</div>
+      <div class="content__none">
+        <p>No movies available here.</p>
+        <a button-contained-primary routerLink="{{ homePath }}">Go to Home</a>
+      </div>
     }
   }
 </div>

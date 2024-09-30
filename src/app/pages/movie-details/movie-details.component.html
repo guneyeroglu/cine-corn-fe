@@ -50,8 +50,21 @@
   </div>
   <div class="details__divider fade-in" style="--animation-delay: 750ms"></div>
   <div class="details__actions fade-in" style="--animation-delay: 1000ms">
-    <button button-contained-primary (click)="handleFavorite()">{{ favoriteText }}</button>
-    <button button-contained-primary (click)="handleList()">{{ listText }}</button>
+    <!-- @if (isFavorite()) { -->
+    <button
+      [attr.button-contained-primary]="isFavorite() ? null : true"
+      [attr.button-contained-error]="isFavorite() ? true : null"
+      (click)="handleFavorite()"
+    >
+      {{ favoriteText }}
+    </button>
+    <button
+      [attr.button-contained-primary]="isAddedToList() ? null : true"
+      [attr.button-contained-error]="isAddedToList() ? true : null"
+      (click)="handleList()"
+    >
+      {{ listText }}
+    </button>
   </div>
   <div class="details__divider fade-in" style="--animation-delay: 1250ms"></div>
   <div class="details__content">
