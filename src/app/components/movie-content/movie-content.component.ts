@@ -1,4 +1,4 @@
-import { Component, input, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 import { IMovie } from '../../global/interfaces';
 import { CineCornMovieCardComponent } from '../movie-card/movie-card.component';

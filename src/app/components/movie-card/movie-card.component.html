@@ -39,7 +39,7 @@
       icon-button
       size="16px"
       [icon]="listIcon"
-      [filled]="movie()?.isAddedToList ?? false"
+      [filled]="isAddedToList()"
       (click)="handleList($event, movie()?.id)"
     />
   </div>

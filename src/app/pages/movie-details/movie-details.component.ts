@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -10,9 +10,14 @@ import {
   ToggleFavoriteService,
   ToggleListService,
 } from '../../services/mutate';
-import { formatDateString, joinArrayToString, manageLoadingState } from '../../global/functions';
+import {
+  formatDateString,
+  joinArrayToString,
+  manageLoadingState,
+  routeConverter,
+} from '../../global/functions';
 import { IError, IMovieDetails, IResponse, ISnackbarState } from '../../global/interfaces';
-import { STATUS_TYPE } from '../../global/enums';
+import { APP_ROUTES, STATUS_TYPE } from '../../global/enums';
 import { setSnackbar } from '../../store/actions';
 
 @Component({
@@ -28,6 +33,7 @@ export class CineCornMovieDetailsComponent {
     private toggleFavoriteService: ToggleFavoriteService,
     private toggleListService: ToggleListService,
     private store: Store<{ snackbar: ISnackbarState }>,
+    private router: Router,
     private route: ActivatedRoute,
   ) {}
 
@@ -96,11 +102,7 @@ export class CineCornMovieDetailsComponent {
   handleFavorite() {
     this.toggleFavoriteService.toggleFavorite(this.movieId).subscribe({
       next: (res: IResponse) => {
-        if (res.status === 201) {
-          this.isFavorite.set(true);
-        } else {
-          this.isFavorite.set(false);
-        }
+        this.isFavorite.set(res.status === 201);
         this.store.dispatch(
           setSnackbar({
             open: true,
@@ -117,6 +119,10 @@ export class CineCornMovieDetailsComponent {
             statusType: STATUS_TYPE.error,
           }),
         );
+
+        if (err.error.status === 401) {
+          this.router.navigate([routeConverter(APP_ROUTES.login)]);
+        }
       },
     });
   }
@@ -124,11 +130,7 @@ export class CineCornMovieDetailsComponent {
   handleList() {
     this.toggleListService.toggleList(this.movieId).subscribe({
       next: (res: IResponse) => {
-        if (res.status === 201) {
-          this.isAddedToList.set(true);
-        } else {
-          this.isAddedToList.set(false);
-        }
+        this.isAddedToList.set(res.status === 201);
         this.store.dispatch(
           setSnackbar({
             open: true,
@@ -145,6 +147,10 @@ export class CineCornMovieDetailsComponent {
             statusType: STATUS_TYPE.error,
           }),
         );
+
+        if (err.error.status === 401) {
+          this.router.navigate([routeConverter(APP_ROUTES.login)]);
+        }
       },
     });
   }

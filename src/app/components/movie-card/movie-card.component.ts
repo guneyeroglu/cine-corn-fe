@@ -1,5 +1,5 @@
 import { Component, input, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { Store } from '@ngrx/store';
 
@@ -27,6 +27,7 @@ export class CineCornMovieCardComponent {
   constructor(
     private toggleFavoriteService: ToggleFavoriteService,
     private toggleListService: ToggleListService,
+    private router: Router,
     private store: Store<{ snackbar: ISnackbarState }>,
   ) {}
 
@@ -51,11 +52,7 @@ export class CineCornMovieCardComponent {
     event.stopPropagation();
     this.toggleFavoriteService.toggleFavorite(movieId).subscribe({
       next: (res: IResponse) => {
-        if (res.status === 201) {
-          this.isFavorite.set(true);
-        } else {
-          this.isFavorite.set(false);
-        }
+        this.isFavorite.set(res.status === 201);
         this.store.dispatch(
           setSnackbar({
             open: true,
@@ -72,6 +69,10 @@ export class CineCornMovieCardComponent {
             statusType: STATUS_TYPE.error,
           }),
         );
+
+        if (err.error.status === 401) {
+          this.router.navigate([routeConverter(APP_ROUTES.login)]);
+        }
       },
     });
   }
@@ -81,11 +82,7 @@ export class CineCornMovieCardComponent {
     event.stopPropagation();
     this.toggleListService.toggleList(movieId).subscribe({
       next: (res: IResponse) => {
-        if (res.status === 201) {
-          this.isAddedToList.set(true);
-        } else {
-          this.isAddedToList.set(false);
-        }
+        this.isAddedToList.set(res.status === 201);
         this.store.dispatch(
           setSnackbar({
             open: true,
@@ -102,6 +99,10 @@ export class CineCornMovieCardComponent {
             statusType: STATUS_TYPE.error,
           }),
         );
+
+        if (err.error.status === 401) {
+          this.router.navigate([routeConverter(APP_ROUTES.login)]);
+        }
       },
     });
   }
