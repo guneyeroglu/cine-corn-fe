@@ -3,8 +3,9 @@
 :host {
   .snackbar-container {
     position: fixed;
-    bottom: calc(80px + 24px + 10px);
+    top: 50px;
     left: 50%;
+    padding: 0 24px;
     transform: translateX(-50%);
     z-index: 9999;
     width: 100%;
