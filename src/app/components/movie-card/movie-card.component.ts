@@ -19,8 +19,8 @@ import { CineCornIconComponent } from '../icons/icon.component';
 })
 export class CineCornMovieCardComponent {
   movie = input<IMovie | null>(null);
-  isImageLoaded: boolean = false;
-  moviePath: string = '';
+  isImageLoaded = signal<boolean>(false);
+  moviePath = signal<string>('');
   isFavorite = signal<boolean>(false);
   isAddedToList = signal<boolean>(false);
 
@@ -36,15 +36,15 @@ export class CineCornMovieCardComponent {
   }
 
   ngOnInit() {
-    this.moviePath = routeConverter(
-      APP_ROUTES.movie_details.replace(':id', this.movie()?.id ?? ''),
+    this.moviePath.set(
+      routeConverter(APP_ROUTES.movie_details.replace(':id', this.movie()?.id ?? '')),
     );
     this.isFavorite.set(this.movie()?.isFavorite ?? false);
     this.isAddedToList.set(this.movie()?.isAddedToList ?? false);
   }
 
   load() {
-    this.isImageLoaded = true;
+    this.isImageLoaded.set(true);
   }
 
   handleFavorite(event: MouseEvent, movieId?: string) {

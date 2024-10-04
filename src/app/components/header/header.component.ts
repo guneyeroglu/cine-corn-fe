@@ -1,8 +1,7 @@
 import { Component, signal } from '@angular/core';
-import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
-import { Subscription } from 'rxjs';
 
 import { routeConverter } from '../../global/functions';
 import { APP_ROUTES } from '../../global/enums';
@@ -37,7 +36,6 @@ export class CineCornHeaderComponent {
       this.isLoading.set(state.isLoading);
     });
   }
-  private routerSubscription!: Subscription;
   homePath: string = APP_ROUTES.home;
   loginPath: string = APP_ROUTES.login;
   registerPath: string = APP_ROUTES.register;
@@ -98,19 +96,5 @@ export class CineCornHeaderComponent {
       matrixParams: 'ignored',
       fragment: 'ignored',
     });
-  }
-
-  ngOnInit() {
-    this.routerSubscription = this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.onCloseDrawer();
-      }
-    });
-  }
-
-  ngOnDestroy() {
-    if (this.routerSubscription) {
-      this.routerSubscription.unsubscribe();
-    }
   }
 }

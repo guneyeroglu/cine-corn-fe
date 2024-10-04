@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { APP_ROUTES } from '../../global/enums';
-import { scrollToTop } from '../../global/functions';
 
 @Component({
   selector: 'cine-corn-footer',
@@ -13,5 +12,4 @@ import { scrollToTop } from '../../global/functions';
 })
 export class CineCornFooterComponent {
   homePath: string = APP_ROUTES.home;
-  onScrollToTop = scrollToTop;
 }

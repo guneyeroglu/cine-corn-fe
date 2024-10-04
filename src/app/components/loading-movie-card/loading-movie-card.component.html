@@ -1,5 +1,5 @@
 <ul class="list responsive-list">
-  @for (item of countArray; track item) {
+  @for (item of countArray(); track item) {
     <li class="list__card loading">
       <ngx-skeleton-loader
         count="1"

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { CineCornMovieContentComponent } from '../../components/movie-content/movie-content.component';
-import { ListService, MovieService } from '../../services/query';
+import { ListService } from '../../services/query';
 import { manageLoadingState } from '../../global/functions';
 import { IError, IMovie, IResponse } from '../../global/interfaces';
+import { CineCornMovieContentComponent } from '../../components/movie-content/movie-content.component';
 
 @Component({
   selector: 'cine-corn-my-list',

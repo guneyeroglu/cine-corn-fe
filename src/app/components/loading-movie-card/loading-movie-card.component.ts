@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @Component({
@@ -10,9 +10,9 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 })
 export class CineCornLoadingMovieCardComponent {
   count = input<number>(1);
-  countArray: number[] = [];
+  countArray = signal<number[]>([]);
 
   ngOnInit() {
-    this.countArray = Array.from({ length: this.count() }, (_, i) => i);
+    this.countArray.set(Array.from({ length: this.count() }, (_, i) => i));
   }
 }

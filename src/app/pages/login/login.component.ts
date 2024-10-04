@@ -1,4 +1,4 @@
-import { Component, ElementRef, viewChild, ViewChild } from '@angular/core';
+import { Component, ElementRef, viewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   ReactiveFormsModule,
@@ -9,13 +9,13 @@ import {
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
-import { CineCornCardComponent } from '../../components/card/card.component';
-import { CineCornIconComponent } from '../../components/icons/icon.component';
 import { LoginService } from '../../services/mutate';
 import { routeConverter } from '../../global/functions';
 import { APP_ROUTES, STATUS_TYPE } from '../../global/enums';
 import { IError, ILoginResponse, IResponse, ISnackbarState } from '../../global/interfaces';
 import { setSnackbar } from '../../store/actions';
+import { CineCornCardComponent } from '../../components/card/card.component';
+import { CineCornIconComponent } from '../../components/icons/icon.component';
 
 @Component({
   selector: 'cine-corn-login',

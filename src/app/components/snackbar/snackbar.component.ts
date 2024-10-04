@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
@@ -14,7 +14,7 @@ import { onCloseSnackbar } from '../../store/actions';
   styleUrl: './snackbar.component.scss',
 })
 export class CineCornSnackbarComponent {
-  private timeoutId: any;
+  private timeoutId!: any;
   private subscription: Subscription = new Subscription();
   constructor(private store: Store<{ snackbar: ISnackbarState }>) {
     this.subscription.add(

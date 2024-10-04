@@ -20,44 +20,32 @@
     </ul>
   </nav>
   <div class="header__actions">
-    @if (isLoading()) {
-      <ngx-skeleton-loader
-        count="3"
-        animation="progress"
-        [theme]="{
-          width: '35px',
-          height: '35px',
-          marginBottom: 0,
-          borderRadius: '50%',
-          backgroundColor: 'rgba(255, 255, 255, 0.4)',
-        }"
-      />
+    <cine-corn-icon button-text-primary icon-button icon="search" (click)="(null)" />
+    @if (user()) {
+      <button class="header__actions--user" #menu button-none (click)="onOpenMenu()">
+        {{ user()?.username }}
+      </button>
+      @if (openMenu()) {
+        <cine-corn-menu [target]="menu" (close)="onCloseMenu()">
+          <cine-corn-menu-item (click)="goMyList()">
+            <cine-corn-icon icon="list_alt" />
+            <span>My List</span>
+          </cine-corn-menu-item>
+          <cine-corn-menu-item (click)="goFavorites()">
+            <cine-corn-icon icon="favorite" />
+            <span>Favorites</span>
+          </cine-corn-menu-item>
+          <div class="divider"></div>
+          <cine-corn-menu-item (click)="logout()">
+            <div class="logout">
+              <cine-corn-icon icon="logout" color="currentColor" />
+              <span>Logout</span>
+            </div>
+          </cine-corn-menu-item>
+        </cine-corn-menu>
+      }
     } @else {
-      <cine-corn-icon button-text-primary icon-button icon="search" (click)="(null)" />
-      @if (user()) {
-        <button class="header__actions--user" #menu button-none (click)="onOpenMenu()">
-          {{ user()?.username }}
-        </button>
-        @if (openMenu()) {
-          <cine-corn-menu [target]="menu" (close)="onCloseMenu()">
-            <cine-corn-menu-item (click)="goMyList()">
-              <cine-corn-icon icon="list_alt" />
-              <span>My List</span>
-            </cine-corn-menu-item>
-            <cine-corn-menu-item (click)="goFavorites()">
-              <cine-corn-icon icon="favorite" />
-              <span>Favorites</span>
-            </cine-corn-menu-item>
-            <div class="divider"></div>
-            <cine-corn-menu-item (click)="logout()">
-              <div class="logout">
-                <cine-corn-icon icon="logout" color="currentColor" />
-                <span>Logout</span>
-              </div>
-            </cine-corn-menu-item>
-          </cine-corn-menu>
-        }
-      } @else {
+      @if (!isLoading()) {
         <a button-text-primary routerLink="{{ registerPath }}">Register</a>
         <a button-contained-primary routerLink="{{ loginPath }}">Login</a>
       }

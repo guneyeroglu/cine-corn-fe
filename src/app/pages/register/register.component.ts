@@ -1,4 +1,4 @@
-import { Component, ElementRef, viewChild, ViewChild } from '@angular/core';
+import { Component, ElementRef, viewChild } from '@angular/core';
 import {
   ReactiveFormsModule,
   FormGroup,
@@ -8,12 +8,12 @@ import {
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
-import { CineCornCardComponent } from '../../components/card/card.component';
-import { CineCornIconComponent } from '../../components/icons/icon.component';
 import { RegisterService } from '../../services/mutate';
 import { IError, IResponse, ISnackbarState } from '../../global/interfaces';
 import { STATUS_TYPE } from '../../global/enums';
 import { setSnackbar } from '../../store/actions';
+import { CineCornCardComponent } from '../../components/card/card.component';
+import { CineCornIconComponent } from '../../components/icons/icon.component';
 
 @Component({
   selector: 'cine-corn-register',

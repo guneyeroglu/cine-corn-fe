@@ -1,11 +1,11 @@
-<a class="card" routerLink="{{ moviePath }}">
+<a class="card" routerLink="{{ moviePath() }}">
   <div class="card__header">
     <cine-corn-icon icon="star" color="#ffa53b" />
     <span>{{ movie()?.point }}</span>
   </div>
-  <div class="card__image" [class.hidden]="!isImageLoaded">
+  <div class="card__image" [class.hidden]="!isImageLoaded()">
     <img [src]="movie()?.posterImage" [alt]="movie()?.name" loading="lazy" (load)="load()" />
-    @if (!isImageLoaded) {
+    @if (!isImageLoaded()) {
       <ngx-skeleton-loader
         count="1"
         animation="progress"

@@ -1,10 +1,10 @@
 import { Component, input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 import { IMovie } from '../../global/interfaces';
+import { APP_ROUTES } from '../../global/enums';
 import { CineCornMovieCardComponent } from '../movie-card/movie-card.component';
 import { CineCornLoadingMovieCardComponent } from '../loading-movie-card/loading-movie-card.component';
-import { APP_ROUTES } from '../../global/enums';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'cine-corn-movie-content',

@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 
-import { ISnackbarState } from '../../global/interfaces';
 import { STATUS_TYPE } from '../../global/enums';
+import { ISnackbarState } from '../../global/interfaces';
 import { setSnackbar, onCloseSnackbar } from '../actions';
 
 export const initialSnackbarState: ISnackbarState = {

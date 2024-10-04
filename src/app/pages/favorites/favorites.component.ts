@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { CineCornMovieContentComponent } from '../../components/movie-content/movie-content.component';
-import { FavoriteService, MovieService } from '../../services/query';
 import { manageLoadingState } from '../../global/functions';
 import { IError, IMovie, IResponse } from '../../global/interfaces';
+import { FavoriteService } from '../../services/query';
+import { CineCornMovieContentComponent } from '../../components/movie-content/movie-content.component';
 
 @Component({
   selector: 'cine-corn-favorites',

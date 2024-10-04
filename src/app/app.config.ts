@@ -4,9 +4,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideHttpClient } from '@angular/common/http';
 import { provideStore } from '@ngrx/store';
 
-import { snackbarReducer } from './store/reducers';
+import { snackbarReducer, authUserReducer } from './store/reducers';
 import { routes } from './app.routes';
-import { authUserReducer } from './store/reducers/auth-user.reducer';
 
 export const appConfig: ApplicationConfig = {
   providers: [

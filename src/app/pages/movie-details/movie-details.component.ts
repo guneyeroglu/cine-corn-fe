@@ -4,14 +4,13 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 
-import { CineCornMovieDetailTextComponent } from './components/movie-detail-text.component';
 import {
   MovieDetailsService,
   ToggleFavoriteService,
   ToggleListService,
 } from '../../services/mutate';
 import {
-  formatDateString,
+  formatDate,
   joinArrayToString,
   manageLoadingState,
   routeConverter,
@@ -19,6 +18,7 @@ import {
 import { IError, IMovieDetails, IResponse, ISnackbarState } from '../../global/interfaces';
 import { APP_ROUTES, STATUS_TYPE } from '../../global/enums';
 import { setSnackbar } from '../../store/actions';
+import { CineCornMovieDetailTextComponent } from './components/movie-detail-text.component';
 
 @Component({
   selector: 'cine-corn-movie-details',
@@ -64,7 +64,7 @@ export class CineCornMovieDetailsComponent {
       next: (res: IMovieDetails) => {
         this.genreNames = joinArrayToString(res.genres);
         this.starNames = joinArrayToString(res.stars);
-        this.releaseDate = formatDateString(res.releaseDate);
+        this.releaseDate = formatDate(res.releaseDate);
         this.runTime = res.runTime ? `${res.runTime} min` : '-';
         this.isFavorite.set(res.isFavorite);
         this.isAddedToList.set(res.isAddedToList);
