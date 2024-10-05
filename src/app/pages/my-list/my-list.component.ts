@@ -46,4 +46,8 @@ export class CineCornMyListComponent {
       });
     });
   }
+
+  toggleList() {
+    this.movies = this.movies.filter((movie: IMovie) => movie.isAddedToList);
+  }
 }

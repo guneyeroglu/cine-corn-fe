@@ -46,4 +46,8 @@ export class CineCornFavoritesComponent {
       });
     });
   }
+
+  toggleFav() {
+    this.movies = this.movies.filter((movie: IMovie) => movie.isFavorite);
+  }
 }

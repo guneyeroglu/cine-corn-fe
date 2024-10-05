@@ -32,7 +32,7 @@
       icon="favorite"
       size="16px"
       [filled]="isFavorite()"
-      (click)="handleFavorite($event, movie()?.id)"
+      (click)="handleFavoriteMovies($event, movie()?.id)"
     />
     <cine-corn-icon
       button-contained-primary
@@ -40,7 +40,7 @@
       size="16px"
       [icon]="listIcon"
       [filled]="isAddedToList()"
-      (click)="handleList($event, movie()?.id)"
+      (click)="handleListMovies($event, movie()?.id)"
     />
   </div>
 </a>

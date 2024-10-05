@@ -9,7 +9,11 @@
       <ul class="responsive-list">
         @for (movie of movies(); track movie.id) {
           <li>
-            <cine-corn-movie-card [movie]="movie" />
+            <cine-corn-movie-card
+              [movie]="movie"
+              (handleFav)="handleFav()"
+              (handleList)="handleList()"
+            />
           </li>
         }
       </ul>

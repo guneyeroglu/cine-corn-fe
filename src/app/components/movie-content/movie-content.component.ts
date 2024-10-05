@@ -1,4 +1,4 @@
-import { Component, input, SimpleChanges } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { IMovie } from '../../global/interfaces';
@@ -16,6 +16,20 @@ import { CineCornLoadingMovieCardComponent } from '../loading-movie-card/loading
 export class CineCornMovieContentComponent {
   title = input.required<string>();
   movies = input.required<IMovie[]>();
+  toggleFav = output<void>();
+  toggleList = output<void>();
   isLoading = input.required<boolean>();
   homePath: string = APP_ROUTES.home;
+
+  handleFav() {
+    if (this.toggleFav) {
+      this.toggleFav.emit();
+    }
+  }
+
+  handleList() {
+    if (this.toggleList) {
+      this.toggleList.emit();
+    }
+  }
 }

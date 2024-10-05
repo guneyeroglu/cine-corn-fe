@@ -1,4 +1,4 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, input, output, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { Store } from '@ngrx/store';
@@ -23,6 +23,8 @@ export class CineCornMovieCardComponent {
   moviePath = signal<string>('');
   isFavorite = signal<boolean>(false);
   isAddedToList = signal<boolean>(false);
+  handleFav = output<void>();
+  handleList = output<void>();
 
   constructor(
     private toggleFavoriteService: ToggleFavoriteService,
@@ -47,12 +49,19 @@ export class CineCornMovieCardComponent {
     this.isImageLoaded.set(true);
   }
 
-  handleFavorite(event: MouseEvent, movieId?: string) {
+  handleFavoriteMovies(event: MouseEvent, movieId?: string) {
     event.preventDefault();
     event.stopPropagation();
     this.toggleFavoriteService.toggleFavorite(movieId).subscribe({
       next: (res: IResponse) => {
-        this.isFavorite.set(res.status === 201);
+        if (res.status === 201) {
+          this.isFavorite.set(true);
+          this.movie()!.isFavorite = true;
+        } else {
+          this.isFavorite.set(false);
+          this.movie()!.isFavorite = false;
+          this.handleFav.emit();
+        }
         this.store.dispatch(
           setSnackbar({
             open: true,
@@ -77,12 +86,19 @@ export class CineCornMovieCardComponent {
     });
   }
 
-  handleList(event: MouseEvent, movieId?: string) {
+  handleListMovies(event: MouseEvent, movieId?: string) {
     event.preventDefault();
     event.stopPropagation();
     this.toggleListService.toggleList(movieId).subscribe({
       next: (res: IResponse) => {
-        this.isAddedToList.set(res.status === 201);
+        if (res.status === 201) {
+          this.isAddedToList.set(true);
+          this.movie()!.isAddedToList = true;
+        } else {
+          this.isAddedToList.set(false);
+          this.movie()!.isAddedToList = false;
+          this.handleList.emit();
+        }
         this.store.dispatch(
           setSnackbar({
             open: true,
