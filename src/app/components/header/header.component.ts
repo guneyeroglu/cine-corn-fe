@@ -65,8 +65,8 @@ export class CineCornHeaderComponent {
     this.openMenu.set(false);
   }
 
-  onOpenDrawer() {
-    this.openDrawer.set(true);
+  handleDrawer() {
+    this.openDrawer.set(!this.openDrawer());
   }
 
   onCloseDrawer() {

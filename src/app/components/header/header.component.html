@@ -1,12 +1,4 @@
 <header class="header responsive-container">
-  <cine-corn-icon
-    button-text-primary
-    icon-button
-    icon="menu"
-    size="36px"
-    class="header__menu"
-    (click)="onOpenDrawer()"
-  />
   <a routerLink="{{ homePath }}" class="header__image">
     <img src="../../../assets/images/img/cine-corn-icon.png" alt="CineCorn" />
   </a>
@@ -20,7 +12,6 @@
     </ul>
   </nav>
   <div class="header__actions">
-    <cine-corn-icon button-text-primary icon-button icon="search" (click)="(null)" />
     @if (user()) {
       <button class="header__actions--user" #menu button-none (click)="onOpenMenu()">
         {{ user()?.username }}
@@ -51,11 +42,16 @@
       }
     }
   </div>
+  <cine-corn-icon
+    button-text-primary
+    icon-button
+    [icon]="openDrawer() ? 'close' : 'menu'"
+    size="36px"
+    class="header__menu"
+    (click)="handleDrawer()"
+  />
 </header>
 <cine-corn-drawer class="drawer" [open]="openDrawer()" (close)="onCloseDrawer()">
-  <div class="drawer__close">
-    <cine-corn-icon icon="close" size="36px" (click)="onCloseDrawer()" />
-  </div>
   <div class="drawer__actions">
     @if (user()) {
       {{ user()?.username }}

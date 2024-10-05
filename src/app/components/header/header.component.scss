@@ -5,9 +5,10 @@
   display: inline-flex;
   position: sticky;
   top: 0;
-  z-index: 9995;
+  z-index: 9999;
   padding-top: 10px;
   padding-bottom: 10px;
+  transition: all 0.35s ease;
   @include opacity-border(bottom);
 
   &::after {
@@ -25,15 +26,7 @@
     justify-content: space-between;
     align-items: stretch;
     height: 50px;
-
-    &__menu {
-      visibility: hidden;
-      pointer-events: none;
-      position: absolute;
-      top: 50%;
-      left: 8px;
-      transform: translate(0%, -50%);
-    }
+    z-index: 9999;
 
     &__image {
       flex: 0;
@@ -145,23 +138,34 @@
         color: colors.$error-50;
       }
     }
+
+    &__menu {
+      display: none;
+      visibility: hidden;
+      pointer-events: none;
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
   }
 
   @media screen and (max-width: 1024px) {
     .header {
+      justify-content: center;
+
       &__menu {
+        display: flex;
         visibility: visible;
         pointer-events: all;
       }
 
       &__image {
         margin-right: 0px;
-        margin-left: 56px;
       }
 
       &__nav,
-      &__actions a,
-      button {
+      &__actions {
         display: none;
       }
     }

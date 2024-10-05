@@ -10,79 +10,50 @@
     align-items: stretch;
     position: fixed;
     inset: 0;
-    z-index: 9999;
+    top: 70px;
+    height: 0;
+    z-index: 9995;
     pointer-events: none;
+    transition: all 0.35s ease;
+    overflow: hidden;
 
     &__content {
       display: flex;
       flex-direction: column;
-      flex: 0 1 70%;
+      flex: 1;
       padding: 24px;
       background-color: colors.$body-color;
-      position: relative;
-      overflow: hidden;
-      transform: translateX(-100%);
-      transition: all 0.35s ease;
+      transform: translateY(0);
 
-      &::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(50% 50% at 50% 50%, transparent, colors.$black-20);
-        z-index: -1;
-      }
-
-      &::before {
-        content: '';
-        position: absolute;
-        inset: 0;
+      &--bg {
+        position: fixed;
+        width: 60%;
+        height: 100%;
+        left: 20%;
         background: conic-gradient(
           from 180deg at 50% 50%,
-          colors.$primary-800 0deg,
-          colors.$primary-500 125deg,
-          colors.$secondary-600 230deg,
-          colors.$secondary-300 360deg
+          #251e62 0deg,
+          #5a4af4 125deg,
+          #1884ca 230deg,
+          #78c8fd 360deg
         );
-        filter: blur(200px);
         z-index: -1;
-      }
-    }
+        filter: blur(200px);
 
-    &__overlay {
-      position: fixed;
-      inset: 0;
-      outline: none;
-      border: none;
-      background-color: colors.$black-50;
-      opacity: 0;
-      transition: all 0.35s ease;
-      z-index: -1;
+        &::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(50% 50% at 50% 50%, transparent, rgba(0, 0, 0, 0.75));
+          z-index: -1;
+        }
+      }
     }
 
     &.open {
       pointer-events: all;
-
-      .drawer__content {
-        transform: translateX(0);
-      }
-
-      .drawer__overlay {
-        opacity: 1;
-      }
-    }
-  }
-
-  @media screen and (max-width: 600px) {
-    .drawer {
-      &__content {
-        flex: 1 1 100%;
-      }
-
-      &__overlay {
-        display: none;
-        visibility: hidden;
-        pointer-events: none;
-      }
+      height: calc(100% - 70px);
+      overflow: unset;
     }
   }
 }

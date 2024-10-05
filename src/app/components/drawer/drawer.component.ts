@@ -18,6 +18,8 @@ export class CineCornDrawerComponent {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['open']) {
+      const header: HTMLHeadElement = document.getElementById('header')!;
+      header.style.backgroundColor = this.open() ? '#121829' : '';
       document.body.style.overflow = this.open() ? 'hidden' : '';
     }
   }

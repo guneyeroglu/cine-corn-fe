@@ -1,8 +1,6 @@
 <div class="drawer" [class.open]="open()">
   <div class="drawer__content">
-    @if (open()) {
-      <ng-content></ng-content>
-    }
+    <div class="drawer__content--bg"></div>
+    <ng-content></ng-content>
   </div>
-  <button class="drawer__overlay" (click)="onClose()"></button>
 </div>
