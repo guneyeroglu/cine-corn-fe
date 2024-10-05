@@ -10,11 +10,11 @@
 
     &__title {
       display: block;
+      position: relative;
       font-size: 2rem;
       font-weight: 500;
       color: colors.$neutral-200;
       margin-bottom: 16px;
-      position: relative;
       @include opacity-border(bottom, 0px, colors.$white-50);
     }
 

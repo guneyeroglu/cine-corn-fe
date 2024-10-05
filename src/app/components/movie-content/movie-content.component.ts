@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, SimpleChanges } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { IMovie } from '../../global/interfaces';
@@ -14,8 +14,8 @@ import { CineCornLoadingMovieCardComponent } from '../loading-movie-card/loading
   styleUrl: './movie-content.component.scss',
 })
 export class CineCornMovieContentComponent {
-  title = input<string>('');
-  movies = input<IMovie[]>([]);
-  isLoading = input<boolean>(true);
+  title = input.required<string>();
+  movies = input.required<IMovie[]>();
+  isLoading = input.required<boolean>();
   homePath: string = APP_ROUTES.home;
 }
