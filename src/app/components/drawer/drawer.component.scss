@@ -24,36 +24,11 @@
       padding: 24px;
       background-color: colors.$body-color;
       transform: translateY(0);
-
-      &--bg {
-        position: fixed;
-        width: 60%;
-        height: 100%;
-        left: 20%;
-        background: conic-gradient(
-          from 180deg at 50% 50%,
-          #251e62 0deg,
-          #5a4af4 125deg,
-          #1884ca 230deg,
-          #78c8fd 360deg
-        );
-        z-index: -1;
-        filter: blur(200px);
-
-        &::after {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background: radial-gradient(50% 50% at 50% 50%, transparent, rgba(0, 0, 0, 0.75));
-          z-index: -1;
-        }
-      }
     }
 
     &.open {
       pointer-events: all;
       height: calc(100% - 70px);
-      overflow: unset;
     }
   }
 }
